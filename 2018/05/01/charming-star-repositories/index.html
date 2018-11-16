@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="每次在 github 上看到好玩的 repository 都会 star 一下，心里想着下次有机会试一下，然后。。 而且我感觉查看自己 star 的 page 做的太不人性化了，为什么不把所有的 records 都放在一页里呢。。分页功能能减轻数据库查找的压力(?)，但是给用户带来的体验并不是特别好，放在一页里，直接 ctrl + f 就可以快乐地查找了，分页了之后就让我感觉有点糟糕。 于是开一篇">
+<meta name="keywords" content="memo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="charming star repositories">
+<meta property="og:url" content="https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/index.html">
+<meta property="og:site_name" content="PWXCOO">
+<meta property="og:description" content="每次在 github 上看到好玩的 repository 都会 star 一下，心里想着下次有机会试一下，然后。。 而且我感觉查看自己 star 的 page 做的太不人性化了，为什么不把所有的 records 都放在一页里呢。。分页功能能减轻数据库查找的压力(?)，但是给用户带来的体验并不是特别好，放在一页里，直接 ctrl + f 就可以快乐地查找了，分页了之后就让我感觉有点糟糕。 于是开一篇">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-11-16T05:22:47.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="charming star repositories">
+<meta name="twitter:description" content="每次在 github 上看到好玩的 repository 都会 star 一下，心里想着下次有机会试一下，然后。。 而且我感觉查看自己 star 的 page 做的太不人性化了，为什么不把所有的 records 都放在一页里呢。。分页功能能减轻数据库查找的压力(?)，但是给用户带来的体验并不是特别好，放在一页里，直接 ctrl + f 就可以快乐地查找了，分页了之后就让我感觉有点糟糕。 于是开一篇">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>charming star repositories</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="PWXCOO" type="application/atom+xml" /><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+<body class="max-width mx-auto px3 ">
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/algorithm/">Algorithm</a></li>
+         
+          <li><a href="/tool/">Tool</a></li>
+         
+          <li><a href="/gist/">Gist</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/05/03/把网站升级到HTTPS/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/03/24/用impress.js做以太坊的presentation/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&text=charming star repositories"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&is_video=false&description=charming star repositories"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=charming star repositories&body=Check out this article: https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&name=charming star repositories&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#learning"><span class="toc-number">1.</span> <span class="toc-text">learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resource"><span class="toc-number">2.</span> <span class="toc-text">resource</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wechat-develope"><span class="toc-number">3.</span> <span class="toc-text">wechat develope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-number">4.</span> <span class="toc-text">JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScrit"><span class="toc-number">5.</span> <span class="toc-text">TypeScrit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Julia"><span class="toc-number">6.</span> <span class="toc-text">Julia</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-number">7.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown"><span class="toc-number">8.</span> <span class="toc-text">markdown</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">9.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Golang"><span class="toc-number">10.</span> <span class="toc-text">Golang</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-number">11.</span> <span class="toc-text">Python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#blockchain"><span class="toc-number">12.</span> <span class="toc-text">blockchain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PowerShell"><span class="toc-number">13.</span> <span class="toc-text">PowerShell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">14.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go"><span class="toc-number">15.</span> <span class="toc-text">Go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust"><span class="toc-number">16.</span> <span class="toc-text">Rust</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Csharp"><span class="toc-number">17.</span> <span class="toc-text">Csharp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Assembly"><span class="toc-number">18.</span> <span class="toc-text">Assembly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tools"><span class="toc-number">19.</span> <span class="toc-text">tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-number">20.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Database"><span class="toc-number">21.</span> <span class="toc-text">Database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#computer-graphics"><span class="toc-number">22.</span> <span class="toc-text">computer-graphics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#machine-learning"><span class="toc-number">23.</span> <span class="toc-text">machine learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#funny"><span class="toc-number">24.</span> <span class="toc-text">funny</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        charming star repositories
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">PWXCOO</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-05-01T12:49:24.000Z" itemprop="datePublished">2018-05-01</time>
+    </div>
+
+
+      
+    <!-- <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/memo/">memo</a>
+    </div> -->
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/memo/">memo</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>每次在 github 上看到好玩的 repository 都会 star 一下，心里想着下次有机会试一下，然后。。</p>
+<p>而且我感觉查看自己 star 的 page 做的太不人性化了，为什么不把所有的 records 都放在一页里呢。。分页功能能减轻数据库查找的压力(?)，但是给用户带来的体验并不是特别好，放在一页里，直接 <code>ctrl + f</code> 就可以快乐地查找了，分页了之后就让我感觉有点糟糕。</p>
+<p>于是开一篇文章，来 record 自己 star 的操作，然后用人肉维护。。</p>
+<h2 id="learning"><a href="#learning" class="headerlink" title="learning"></a>learning</h2><ul>
+<li><a href="https://github.com/N-ZOO/everycode" target="_blank" rel="noopener">N-ZOO/everycode</a>: 前端每日一练。作者每天在 issue 里发布题目。</li>
+<li><a href="https://github.com/dt-fe/weekly" target="_blank" rel="noopener">dt-fe/weekly</a>: 前端精读周刊</li>
+<li><a href="https://github.com/1c7/chinese-independent-developer" target="_blank" rel="noopener">1c7/chinese-independent-developer</a>: 中国独立开发者项目列表</li>
+</ul>
+<h2 id="resource"><a href="#resource" class="headerlink" title="resource"></a>resource</h2><ul>
+<li><a href="https://github.com/jwasham/coding-interview-university" target="_blank" rel="noopener">jwasham/coding-interview-university</a>:  to-do list of study</li>
+<li><a href="https://github.com/helloqingfeng/Awsome-Front-End-learning-resource" target="_blank" rel="noopener">helloqingfeng/Awsome-Front-End-learning-resource</a>: resource of Front-End</li>
+<li><a href="https://github.com/smyhvae/Web" target="_blank" rel="noopener">smyhvae/Web</a>: 前端入门和进阶学习笔记</li>
+<li><a href="https://github.com/goodjack/developer-roadmap-chinese" target="_blank" rel="noopener">goodjack/developer-roadmap-chinese</a>: 成為 Web 開發人員的路線圖</li>
+<li><a href="https://github.com/ningzimu/See_you_in_BUPT" target="_blank" rel="noopener">ningzimu / See_you_in_BUPT</a>: 北邮考研。。</li>
+<li><a href="https://github.com/o2team/H5Skills/issues" target="_blank" rel="noopener">o2team/H5Skills</a>: 移动端开发的 trick</li>
+<li><a href="https://github.com/jawil/blog" target="_blank" rel="noopener">jawil/blog</a>: jawil 的前端开发博客</li>
+<li><a href="https://github.com/wxyyxc1992/Web-Series" target="_blank" rel="noopener">wxyyxc1992/Web-Series</a>: Web 开发教程</li>
+<li><a href="https://github.com/CyC2018/Interview-Notebook" target="_blank" rel="noopener">CyC2018/Interview-Notebook</a>: 技术面试资源</li>
+<li><a href="https://github.com/i5ting/How-to-learn-node-correctly" target="_blank" rel="noopener">i5ting/How-to-learn-node-correctly</a>: node.js 教程</li>
+<li><a href="https://github.com/interagent/http-api-design" target="_blank" rel="noopener">interagent/http-api-design</a>: HTTP API design guide</li>
+<li><a href="https://github.com/atomiks/30-seconds-of-css" target="_blank" rel="noopener">atomiks/30-seconds-of-css</a>: 30 分钟爽 css</li>
+<li><a href="https://github.com/Chalarangelo/30-seconds-of-code" target="_blank" rel="noopener">Chalarangelo/30-seconds-of-code</a>: 30 分钟爽 JavaScript</li>
+<li><a href="https://github.com/kriadmin/30-seconds-of-python-code" target="_blank" rel="noopener">kriadmin/30-seconds-of-python-code</a>: 30 分钟爽python</li>
+<li><a href="https://github.com/fejes713/30-seconds-of-interviews" target="_blank" rel="noopener">fejes713/30-seconds-of-interviews</a>: 30 分钟爽前端面试</li>
+<li><a href="https://github.com/tuguangquan/mybatis" target="_blank" rel="noopener">tuguangquan/mybatis</a>: mybatis 源码中文注释</li>
+<li><a href="https://github.com/jaywcjlove/mysql-tutorial" target="_blank" rel="noopener">jaywcjlove/mysql-tutorial</a>: MySQL 入门教程</li>
+<li><a href="https://github.com/CarpenterLee/JCFInternals" target="_blank" rel="noopener">CarpenterLee/JCFInternals</a>: 深入理解 Java 集合框架</li>
+<li><a href="https://github.com/sindresorhus/awesome-nodejs" target="_blank" rel="noopener">sindresorhus/awesome-nodejs</a>: awesome node.js</li>
+<li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">vuejs/awesome-vue</a>: awesome vue </li>
+<li><a href="https://github.com/vinta/awesome-python" target="_blank" rel="noopener">vinta/awesome-python</a>: awesome python</li>
+<li><a href="https://github.com/seaswalker/Spring" target="_blank" rel="noopener">seaswalker/Spring</a>: Spring 源码阅读</li>
+<li><a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener">sindresorhus/awesome</a>: awesome 项目</li>
+<li><a href="https://github.com/zhanglei-workspace/shopping-management-system" target="_blank" rel="noopener">zhanglei-workspace/shopping-management-system</a>: Java 项目</li>
+<li><a href="https://github.com/justjavac/the-front-end-knowledge-you-may-not-know" target="_blank" rel="noopener">justjavac/the-front-end-knowledge-you-may-not-know</a>: 你可能不知道的前端知识点</li>
+<li><a href="https://github.com/xingshaocheng/architect-awesome" target="_blank" rel="noopener">xingshaocheng/architect-awesome</a>: 后端架构师技术图谱</li>
+<li><a href="https://github.com/davideuler/architecture.of.internet-product" target="_blank" rel="noopener">davideuler/architecture.of.internet-product</a>: 互联网公司技术架构</li>
+<li><a href="https://github.com/answershuto/learnVue" target="_blank" rel="noopener">answershuto/learnVue</a>: Vue.js 源码解析</li>
+<li><a href="https://github.com/EZLippi/Tinyhttpd" target="_blank" rel="noopener">EZLippi/Tinyhttpd</a>: Tinyhttpd 是J. David Blackstone在1999年写的一个不到 500 行的超轻量型 Http Server，用来学习非常不错，可以帮助我们真正理解服务器程序的本质。</li>
+<li><a href="https://github.com/linw7/TKeed" target="_blank" rel="noopener">linw7/TKeed</a>: HTTP WebServer</li>
+<li><a href="https://github.com/chyingp/nodejs-learning-guide" target="_blank" rel="noopener">chyingp/nodejs-learning-guide</a>: Nodejs学习笔记以及经验总结</li>
+<li><a href="https://github.com/fex-team/styleguide" target="_blank" rel="noopener">fex-team/styleguide</a>: 文档与源码编写风格</li>
+<li><a href="https://github.com/EbookFoundation/free-programming-books" target="_blank" rel="noopener">EbookFoundation/free-programming-books</a>:<br>Freely available programming books</li>
+<li><a href="吴恩达老师的机器学习课程个人笔记">fengdu78 / Coursera-ML-AndrewNg-Notes</a></li>
+<li><a href="https://github.com/fastai/numerical-linear-algebra" target="_blank" rel="noopener">fastai/numerical-linear-algebra</a>: Free online textbook of Jupyter notebooks for <a href="http://www.fast.ai/" target="_blank" rel="noopener">fast.ai</a> Computational Linear Algebra course <a href="http://www.fast.ai/2017/07/17/num-lin-alg/" target="_blank" rel="noopener">http://www.fast.ai/2017/07/17/num-lin…</a></li>
+<li><a href="https://github.com/crossoverJie/Java-Interview" target="_blank" rel="noopener">crossoverJie/Java-Interview</a>: java 面试</li>
+<li><a href="https://github.com/lishuhuakai/CS" target="_blank" rel="noopener">lishuhuakai/CS</a>: 上过的公开课的作业，源代码的注释版本，一个大杂烩。</li>
+<li><a href="https://github.com/linw7/Skill-Tree" target="_blank" rel="noopener">linw7/Skill-Tree</a>: C/C++ 后台开发技能树</li>
+<li><a href="https://github.com/ty4z2008/Qix" target="_blank" rel="noopener">ty4z2008/Qix</a>: Machine Learning、Deep Learning、PostgreSQL、Distributed System、Node.Js、Golang 翻译</li>
+<li><a href="https://github.com/ckcz123/codejam" target="_blank" rel="noopener">ckcz123/codejam</a>: Codejam, apac, kickstart, I/O for Women… 2017, 2016, 2015, 2014… All solutions here!</li>
+<li><a href="https://github.com/nailperry-zd/The-Economist" target="_blank" rel="noopener">nailperry-zd/The-Economist</a>: The Economist 经济学人，持续更新</li>
+<li><a href="https://github.com/ityouknow/spring-boot-examples" target="_blank" rel="noopener">ityouknow/spring-boot-examples</a>: about learning Spring Boot via examples. Spring Boot 技术栈示例代码，快速简单上手教程。 <a href="http://www.ityouknow.com/" target="_blank" rel="noopener">http://www.ityouknow.com/</a></li>
+<li><a href="https://github.com/chrislgarry/Apollo-11" target="_blank" rel="noopener">https://github.com/chrislgarry/Apollo-11</a>: Original Apollo 11 Guidance Computer (AGC) source code for the command and lunar modules. 阿波罗 11 号代码。</li>
+<li><a href="https://github.com/kdn251/interviews" target="_blank" rel="noopener">kdn251/interviews</a>: Everything you need to know to get the job.</li>
+<li><a href="https://github.com/amusi/daily-paper-computer-vision" target="_blank" rel="noopener">amusi/daily-paper-computer-vision</a>: 记录每天整理的计算机视觉/深度学习/机器学习相关方向的论文</li>
+<li><a href="https://github.com/QSCTech/zju-icicles" target="_blank" rel="noopener">QSCTech/zju-icicles</a>: 浙江大学课程攻略共享计划</li>
+<li><a href="https://github.com/imhuay/Algorithm_Interview_Notes-Chinese" target="_blank" rel="noopener">imhuay/Algorithm_Interview_Notes-Chinese</a>: 2018/2019/校招/春招/秋招/算法/机器学习(Machine Learning)/深度学习(Deep Learning)/自然语言处理(NLP)/C/C++/Python/</li>
+<li><a href="https://github.com/alibaba/dubbo-spring-boot-starter" target="_blank" rel="noopener">alibaba/dubbo-spring-boot-starter</a>: Dubbo Spring Boot Starter</li>
+<li><a href="https://github.com/godruoyi/restful-api-specification" target="_blank" rel="noopener">godruoyi/restful-api-specification</a>: RESTful API 设计规范</li>
+<li><a href="https://github.com/ruanyf/weekly" target="_blank" rel="noopener">ruanyf/weekly</a>: 技术分享周刊，每周五发布</li>
+<li><a href="https://github.com/leereilly/games" target="_blank" rel="noopener">leereilly/games</a>: A list of popular/awesome videos games, add-ons, maps, etc. hosted on GitHub. Any genre. Any platform. Any engine.</li>
+<li><a href="https://github.com/guobinhit/intellij-idea-tutorial" target="_blank" rel="noopener">guobinhit/intellij-idea-tutorial</a>: This is a tutorial of IntelliJ IDEA, you can know how to use IntelliJ IDEA better and better.</li>
+</ul>
+<h2 id="wechat-develope"><a href="#wechat-develope" class="headerlink" title="wechat develope"></a>wechat develope</h2><ul>
+<li><a href="https://github.com/xiaobei666/weixin-xiaochengxu666-info" target="_blank" rel="noopener">xiaobei666/weixin-xiaochengxu666-info</a>: 小程序开发资源</li>
+<li><a href="https://github.com/Tencent/wepy" target="_blank" rel="noopener">Tencent/wepy</a>: 官方的小程序组件化开发框架</li>
+<li><a href="https://github.com/Meituan-Dianping/mpvue" target="_blank" rel="noopener">Meituan-Dianping/mpvue</a>: 美团的小程序开发框架</li>
+<li><a href="https://github.com/chemzqm/wept" target="_blank" rel="noopener">chemzqm/wept</a>: 微信小程序 web 端实时运行工具</li>
+</ul>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ul>
+<li><a href="https://github.com/nhnent/tui.calendar" target="_blank" rel="noopener">nhnent/tui.calendar</a>: A JavaScript calendar </li>
+<li><a href="https://github.com/xx45/dayjs" target="_blank" rel="noopener">xx45/dayjs</a>:  JavaScript library of date</li>
+<li><a href="https://github.com/vuejs/vuepress" target="_blank" rel="noopener">vuejs/vuepress</a>: 轻量的 vue 静态站点生成器</li>
+<li><a href="https://github.com/Popmotion/popmotion" target="_blank" rel="noopener">Popmotion/popmotion</a>: 很酷的动画库</li>
+<li><a href="https://github.com/recore/refast" target="_blank" rel="noopener">recore/refast</a>: react 的组件管理教程</li>
+<li><a href="vuejs/vue">vuejs/vue</a>: vue</li>
+<li><a href="https://github.com/jquery/jquery" target="_blank" rel="noopener">jquery/jquery</a>: jQuery JavaScript Library</li>
+<li><a href="https://github.com/nodemailer/nodemailer" target="_blank" rel="noopener">nodemailer/nodemailer</a>: 用 node 来发邮件</li>
+<li><a href="https://github.com/brix/crypto-js" target="_blank" rel="noopener">brix/crypto-js</a>: js 加密库</li>
+<li><a href="https://github.com/eggjs/egg" target="_blank" rel="noopener">eggjs/egg</a>: 企业级框架和应用 by node + koa</li>
+<li><a href="https://github.com/i18next/i18next" target="_blank" rel="noopener">i18next/i18next</a>: 支持国际化的 JavaScript 框架</li>
+<li><a href="https://github.com/mrdoob/three.js" target="_blank" rel="noopener">mrdoob/three.js</a>: JavaScript 3D library. <a href="https://threejs.org/" target="_blank" rel="noopener">https://threejs.org/</a></li>
+<li><a href="https://github.com/nswbmw/node-in-debugging" target="_blank" rel="noopener">nswbmw/node-in-debugging</a>:《Node.js 调试指南》</li>
+<li><a href="https://github.com/ruanyf/jstutorial" target="_blank" rel="noopener">ruanyf/jstutorial</a>: Javascript tutorial book <a href="http://javascript.ruanyifeng.com" target="_blank" rel="noopener">http://javascript.ruanyifeng.com</a></li>
+<li><a href="https://github.com/webkul/vivid" target="_blank" rel="noopener">webkul/vivid</a>: a JavaScript library which is built to easily customize and use the SVG Icons with a blaze. <a href="https://webkul.github.io/vivid" target="_blank" rel="noopener">https://webkul.github.io/vivid</a></li>
+<li><a href="https://github.com/dankogai/js-base64" target="_blank" rel="noopener">dankogai/js-base64</a>: Base64 implementation for JavaScript</li>
+<li><a href="https://github.com/botui/botui" target="_blank" rel="noopener">botui/botui</a>: A JavaScript framework to create conversational UIs, <a href="https://botui.org" target="_blank" rel="noopener">https://botui.org
+</a></li>
+<li><a href="https://github.com/imbrn/v8n" target="_blank" rel="noopener">imbrn/v8n</a>: JavaScript fluent validation library</li>
+<li><a href="https://github.com/hack-chat/main" target="_blank" rel="noopener">hack-chat/main</a>: a minimal, distraction-free chat application </li>
+<li><a href="https://github.com/hotoo/pinyin" target="_blank" rel="noopener">hotoo/pinyin</a>:  汉字拼音 ➜ hàn zì pīn yīn</li>
+</ul>
+<h2 id="TypeScrit"><a href="#TypeScrit" class="headerlink" title="TypeScrit"></a>TypeScrit</h2><ul>
+<li><a href="https://github.com/zhongsp/TypeScript" target="_blank" rel="noopener">zhongsp/TypeScript</a>: TypeScript 教程</li>
+<li><a href="https://github.com/shinima/battle-city" target="_blank" rel="noopener">shinima/battle-city</a>: ts 编写的坦克大战</li>
+<li><a href="https://github.com/nhnent/tui.chart" target="_blank" rel="noopener">nhnent/tui.chart</a>: 一个可视化库</li>
+<li><a href="https://github.com/Microsoft/TypeScript-Handbook" target="_blank" rel="noopener">Microsoft/TypeScript-Handbook</a>: TyepScirpt Handbook</li>
+<li><a href="https://github.com/Microsoft/TypeScript-Node-Starter" target="_blank" rel="noopener">Microsoft/TypeScript-Node-Starter</a>: A starter template for TypeScript and Node with a detailed README describing how to use the two together.</li>
+<li><a href="https://github.com/Microsoft/TypeScriptSamples" target="_blank" rel="noopener">Microsoft/TypeScriptSamples</a>: Samples for TypeScript</li>
+<li><a href="https://github.com/Microsoft/tsdoc" target="_blank" rel="noopener">Microsoft/tsdoc</a>: A doc comment standard for the TypeScript language</li>
+<li><a href="https://github.com/electron/fiddle" target="_blank" rel="noopener">electron/fiddle</a>:  The easiest way to get started with Electron</li>
+</ul>
+<h2 id="Julia"><a href="#Julia" class="headerlink" title="Julia"></a>Julia</h2><ul>
+<li><a href="https://github.com/JuliaLang/julia" target="_blank" rel="noopener">JuliaLang/julia</a>:The Julia Language: A fresh approach to technical computing. </li>
+<li><a href="https://github.com/JuliaPlots/Plots.jl" target="_blank" rel="noopener">JuliaPlots/Plots.jl</a>: Powerful convenience for Julia visualizations and data analysis </li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><ul>
+<li><a href="https://github.com/CrowHawk/JavaLearning" target="_blank" rel="noopener">CrowHawk/JavaLearning</a>: 本仓库记录了我的Java学习进阶之路,涵盖了Java基础、JDK源码、JVM中的重要知识，附有代码和博客讲解，旨在提供一个Java在线共享学习平台,帮助更多的Java学习者入门进阶。</li>
+<li><a href="https://github.com/spring-projects/spring-boot" target="_blank" rel="noopener">spring-projects/spring-boot</a>: Spring Boot</li>
+<li><a href="https://github.com/alibaba/arthas" target="_blank" rel="noopener">alibaba/arthas</a>: Alibaba Java Diagnostic Tool Arthas/Alibaba Java诊断利器Arthas</li>
+<li><a href="https://github.com/Snailclimb/JavaGuide" target="_blank" rel="noopener">Snailclimb/JavaGuide</a>: 【Java学习+面试指南】 一份涵盖大部分Java程序员所需要掌握的核心知识。</li>
+</ul>
+<h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><ul>
+<li><a href="https://github.com/tylingsoft/markdown-plus" target="_blank" rel="noopener">tylingsoft/markdown-plus</a>: 增强的 markdown</li>
+<li><a href="https://github.com/marktext/marktext" target="_blank" rel="noopener">marktext/marktext</a>: markdown editor。能实时更新 markdown 的 preview，而不是在另一个窗口表示。用了一次感觉不是很好。。可能 markdown 已经在心中格式化(?)</li>
+</ul>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><ul>
+<li><a href="https://github.com/hnes/libaco" target="_blank" rel="noopener">hnes/libaco</a>: A blazing fast and lightweight C asymmetric coroutine library</li>
+<li><a href="https://github.com/curl/curl" target="_blank" rel="noopener">curl/curl</a>: A command line tool and library for transferring data with URL syntax</li>
+<li><a href="https://github.com/cxong/tinydir" target="_blank" rel="noopener">cxong/tinydir</a>: Lightweight, portable and easy to integrate C directory and file reader</li>
+<li><a href="https://github.com/cfenollosa/os-tutorial" target="_blank" rel="noopener">cfenollosa/os-tutorial</a>: How to create an OS from scratch</li>
+</ul>
+<h2 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h2><ul>
+<li><a href="https://github.com/chai2010/advanced-go-programming-book" target="_blank" rel="noopener">chai2010/advanced-go-programming-book</a>:Go语言高级编程》开源图书，涵盖CGO、Go汇编语言、RPC实现、Protobuf插件实现、Web框架实现、分布式系统等高阶主题</li>
+</ul>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><ul>
+<li><a href="https://github.com/google/python-fire" target="_blank" rel="noopener">google/python-cli</a>: google 的。一个能给 python 对下行自动生成命令行接口的库</li>
+<li><a href="https://github.com/dingdang-robot/dingdang-robot" target="_blank" rel="noopener">dingdang-robot/dingdang-robot</a>: 中文语音对话机器人/智能音箱项目</li>
+<li><a href="https://github.com/kennethreitz/requests-html" target="_blank" rel="noopener">kennethreitz/requests-html</a>: requests 作者写的终极升级版 HTML-parsing 库</li>
+<li><a href="https://github.com/offu/WeRoBot" target="_blank" rel="noopener">offu/WeRoBot</a>: 微信公众号开发框架</li>
+<li><a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">soimort/you-get</a>: python 的下载库 </li>
+<li><a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener">pyenv/pyenv</a>: 一个简单的 python 版本管理器</li>
+<li><a href="https://github.com/home-assistant/home-assistant" target="_blank" rel="noopener">home-assistant/home-assistant</a>: Open-source home automation platform running on Python 3 <a href="ttps://home-assistant.io" target="_blank" rel="noopener">https://home-assistant.io</a>。开源的 loT 平台</li>
+<li><a href="https://github.com/networkx/networkx" target="_blank" rel="noopener">networkx/networkx</a>: Software for complex networks with Python.</li>
+<li><a href="https://github.com/lisniuse/numpy-cn" target="_blank" rel="noopener">lisniuse/numpy-cn</a>: The Chinese version of numpy’s official document.中文版 numpy 文档。</li>
+<li><a href="https://github.com/GoogleCloudPlatform/python-docs-samples" target="_blank" rel="noopener">GoogleCloudPlatform/python-docs-samples</a>: Code samples used on cloud.google.com</li>
+<li><a href="https://github.com/dbader/schedule" target="_blank" rel="noopener">dbader/schedule</a>: Python job scheduling for humans.</li>
+<li><a href="https://github.com/huge-success/sanic" target="_blank" rel="noopener">huge-success/sanic</a>: Async Python 3.5+ web server that’s written to go fast </li>
+<li><a href="https://github.com/jaystone776/python-data-science-cheatsheet" target="_blank" rel="noopener">jaystone776/python-data-science-cheatsheet</a>: Python数据科学速查表</li>
+</ul>
+<h2 id="blockchain"><a href="#blockchain" class="headerlink" title="blockchain"></a>blockchain</h2><ul>
+<li><a href="https://github.com/chaozh/awesome-blockchain-cn" target="_blank" rel="noopener">chaozh/awesome-blockchain-cn</a>: 区块链资源</li>
+</ul>
+<h2 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h2><ul>
+<li><a href="https://github.com/PowerShell/PowerShell" target="_blank" rel="noopener">PowerShell/PowerShell</a>: PowerShell for every system! <a href="https://microsoft.com/powershell" target="_blank" rel="noopener">https://microsoft.com/powershell</a></li>
+<li><a href="https://github.com/techstay/powershell-study" target="_blank" rel="noopener">techstay/powershell-study</a>: Powershell学习笔记</li>
+<li><a href="https://github.com/GeeLaw/PowerShellThingies" target="_blank" rel="noopener">GeeLaw/PowerShellThingies</a>: My PowerShell thingies.</li>
+</ul>
+<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><ul>
+<li><a href="https://github.com/google/googletest" target="_blank" rel="noopener">google/googletest</a>: google 的 c++ 测试框架</li>
+<li><a href="https://github.com/rigtorp/awesome-modern-cpp" target="_blank" rel="noopener">rigtorp/awesome-modern-cpp</a>: A collection of resources on modern C++。现代 c++ 集合。</li>
+<li><a href="https://github.com/huihut/interview" target="_blank" rel="noopener">huihut/interview</a>:  C/C++面试知识总结</li>
+<li><a href="https://github.com/intel/hyperscan" target="_blank" rel="noopener">intel/hyperscan</a>: High-performance regular expression matching library</li>
+<li><a href="https://github.com/chenshuo/muduo" target="_blank" rel="noopener">chenshuo/muduo</a>: A C++ non-blocking network library for multi-threaded server in Linux</li>
+</ul>
+<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><ul>
+<li><a href="https://github.com/golang/go" target="_blank" rel="noopener">golang/go</a>: The Go programming language <a href="https://golang.org" target="_blank" rel="noopener">https://golang.org</a></li>
+<li><a href="https://github.com/gopherdata/gophernotes" target="_blank" rel="noopener">gopherdata/gophernotes</a>: The Go kernel for Jupyter notebooks and nteract.</li>
+<li><a href="https://github.com/Unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">Unknwon/the-way-to-go_ZH_CN</a>: 《The Way to Go》中文译本，中文正式名《Go 入门指南》</li>
+</ul>
+<h2 id="Rust"><a href="#Rust" class="headerlink" title="Rust"></a>Rust</h2><ul>
+<li><a href="https://github.com/rust-lang/rust" target="_blank" rel="noopener">rust-lang/rust</a>: A safe, concurrent, practical language.</li>
+</ul>
+<h2 id="Csharp"><a href="#Csharp" class="headerlink" title="Csharp"></a>Csharp</h2><ul>
+<li><a href="https://github.com/ServiceStack/ServiceStack" target="_blank" rel="noopener">ServiceStack/ServiceStack</a>: Web framework for csharp</li>
+</ul>
+<h2 id="Assembly"><a href="#Assembly" class="headerlink" title="Assembly"></a>Assembly</h2><ul>
+<li><a href="https://github.com/nemasu/asmttpd" target="_blank" rel="noopener">nemasu/asmttpd</a>: Web server for Linux written in amd64 assembly.</li>
+</ul>
+<h2 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h2><ul>
+<li><a href="https://github.com/tomnomnom/gron" target="_blank" rel="noopener">tomnomnom/gron</a>: Make JSON greppable</li>
+<li><a href="https://github.com/tabler/tabler" target="_blank" rel="noopener">tabler/tabler</a>: 用 bootstrap4 做的仪表盘</li>
+<li><a href="https://github.com/tangrela/ojbk_jiexi" target="_blank" rel="noopener">tangrela/ojbk_jiexi</a>: 视频解析</li>
+<li><a href="https://github.com/xinyu198736/sketch-to-html" target="_blank" rel="noopener">xinyu198736/sketch-to-html</a>: sketch 转化成 html</li>
+<li><a href="https://github.com/videojs/video.js" target="_blank" rel="noopener">videojs/video.js</a>: HTML&amp;FLASH 视频播放器</li>
+<li><a href="https://github.com/pshihn/rough" target="_blank" rel="noopener">pshihn/rough</a>: create graphics。很酷的。</li>
+<li><a href="https://github.com/parkjs814/AlgorithmVisualizer" target="_blank" rel="noopener">parkjs814/AlgorithmVisualizer</a>: 数据结构算法可视化</li>
+<li><a href="https://github.com/vinta/pangu.js" target="_blank" rel="noopener">vinta/pangu.js</a>: 给网页上英文和数字自动加上空格的 chrome 插件</li>
+<li><a href="https://github.com/atom/xray" target="_blank" rel="noopener">atom/xray</a>: atom 团队在编写的下一代编辑器</li>
+<li><a href="https://github.com/game-helper/hongbao" target="_blank" rel="noopener">game-helper/hongbao</a>: 薅外卖平台的羊毛</li>
+<li><a href="https://github.com/skywind3000/awesome-cheatsheets" target="_blank" rel="noopener">skywind3000/awesome-cheatsheets</a>: 编程语言、框架和开发工具的速查表</li>
+<li><a href="https://github.com/gpakosz/.tmux" target="_blank" rel="noopener">gpakosz/.tmux</a>: shell 工具</li>
+<li><a href="https://github.com/Microsoft/vscode-docs" target="_blank" rel="noopener">Microsoft/vscode-docs</a>: vscode 文档</li>
+<li><a href="https://github.com/octref/polacode" target="_blank" rel="noopener">octref/polacode</a>: 迅速截取代码片段的 vscode 插件</li>
+<li><a href="https://github.com/impress/impress.js" target="_blank" rel="noopener">impress/impress.js</a>: presentation framework</li>
+<li><a href="https://github.com/Binaryify/NeteaseCloudMusicApi" target="_blank" rel="noopener">Binaryify/NeteaseCloudMusicApi</a>: 网易云音乐 Node.js API service </li>
+<li><a href="https://github.com/dunovank/jupyter-themes" target="_blank" rel="noopener">dunovank/jupyter-themes</a>: Jupyter Notebook Themes</li>
+<li><a href="https://github.com/d3/d3" target="_blank" rel="noopener">d3/d3</a>: d3.js 可视化库</li>
+<li><a href="https://github.com/github/gitignore" target="_blank" rel="noopener">github/gitignore</a>: 项目 gitignore 文件  </li>
+<li><a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener">naptha/tesseract.js</a>: tesseract.js OCR 识别库</li>
+<li><a href="https://github.com/ClassicOldSong/typinyin.js" target="_blank" rel="noopener">ClassicOldSong/typinyin.js</a>: 用拼音自动输入中文特效的前端js插件</li>
+<li><a href="https://github.com/dzhongyi/crack-geetest" target="_blank" rel="noopener">dzhongyi/crack-geetest</a>: 滑动验证码破解</li>
+<li><a href="https://github.com/node-schedule/node-schedule" target="_blank" rel="noopener">node-schedule/node-schedule</a>: A cron-like and not-cron-like job scheduler for Node.Node 的定时程序库</li>
+<li><a href="https://github.com/Hentioe/sorry-generator" target="_blank" rel="noopener">Hentioe/sorry-generator</a>: 王境泽/偷车贼/为所欲为等字幕梗生成器 for Golang</li>
+<li><a href="https://github.com/DIYgod/RSSHub" target="_blank" rel="noopener">DIYgod/RSSHub</a>: 使用 RSS 连接全世界 <a href="https://rsshub.js.org" target="_blank" rel="noopener">https://rsshub.js.org</a></li>
+<li><a href="https://github.com/maxchehab/CSS-Keylogging" target="_blank" rel="noopener">maxchehab/CSS-Keylogging</a>: Chrome extension and Express server that exploits keylogging abilities of CSS.</li>
+<li><a href="https://github.com/carlos-wong/cerebro-codelf" target="_blank" rel="noopener">carlos-wong/cerebro-codelf</a>: 给变量起名的事情上，为你生命省 3s</li>
+<li><a href="https://github.com/grpc/grpc" target="_blank" rel="noopener">grpc/grpc</a>: The C based gRPC (C++, Python, Ruby, Objective-C, PHP, C#) </li>
+<li><a href="https://github.com/google/protobuf" target="_blank" rel="noopener">google/protobuf</a>: Google 开源的一种数据交换格式</li>
+<li><a href="https://github.com/grpc-ecosystem/grpc-gateway" target="_blank" rel="noopener">grpc-ecosystem/grpc-gateway</a>: generates a reverse-proxy server which translates a RESTful JSON API into gRPC</li>
+<li><a href="https://github.com/Microsoft/VoTT" target="_blank" rel="noopener">Microsoft/VoTT</a>: Visual Object Tagging Tool</li>
+<li><a href="https://github.com/pedronauck/docz" target="_blank" rel="noopener">pedronauck/docz</a>: 写文档的一个工具，<a href="https://docz.site" target="_blank" rel="noopener">https://docz.site</a></li>
+<li><a href="https://github.com/neo4j/neo4j" target="_blank" rel="noopener">neo4j/neo4j</a>: 图数据库。<br>Graphs for Everyone <a href="http://neo4j.com" target="_blank" rel="noopener">http://neo4j.com</a></li>
+<li><a href="https://github.com/chjj/tty.js" target="_blank" rel="noopener">chjj/tty.js</a>: A terminal for your browser, using node/express/socket.io</li>
+<li><a href="https://github.com/zenozeng/fonts.css" target="_blank" rel="noopener">zenozeng/fonts.css</a>: 跨平台 CSS 中文字体解决方案</li>
+<li><a href="https://github.com/kitze/sizzy" target="_blank" rel="noopener">kitze/sizzy</a>: A tool for testing responsive websites crazy-fast <a href="https://sizzy.co/" target="_blank" rel="noopener">https://sizzy.co/</a></li>
+<li><a href="https://github.com/wintercn/dog-fucked-zhihu" target="_blank" rel="noopener">wintercn/dog-fucked-zhihu</a>: 退出知乎好帮手——狗日的知乎，备份自己的答案，取消所有点赞，批量替换所有答案</li>
+<li><a href="https://github.com/hiroppy/fusuma" target="_blank" rel="noopener">hiroppy/fusuma</a>: Easily make slides with markdown. </li>
+<li><a href="https://github.com/vimagick/dockerfiles" target="_blank" rel="noopener">vimagick/dockerfiles</a>: A collection of delicious docker recipes </li>
+<li><a href="https://github.com/Natoto/WeChatPlugin" target="_blank" rel="noopener">Natoto/WeChatPlugin</a>: Plugin For Mac WeChat. 浏览朋友圈，消息防撤回，微信多开，自动回复</li>
+<li><a href="https://github.com/EZLippi/WebBench" target="_blank" rel="noopener">EZLippi/WebBench</a>: linux下使用的非常简单的网站压测工具</li>
+<li><a href="https://github.com/cameronhunter/local-ssl-proxy" target="_blank" rel="noopener">cameronhunter/local-ssl-proxy</a>:<br>Simple SSL HTTP proxy using a self-signed certificate. Intended for local development only.本地的 SSL，localhost 的 https。</li>
+<li><a href="https://github.com/longXboy/lunnel" target="_blank" rel="noopener">longXboy/lunnel</a>: lunnel 是一款简单易用的内网NAT穿越、反向代理软件，支持 HTTP, HTTPS, UDP, TCP、Unix socket 协议。</li>
+<li><a href="https://github.com/amix/vimrc" target="_blank" rel="noopener">amix/vimrc</a>: The ultimate Vim configuration: vimrc。vimrc 配置。</li>
+<li><a href="https://github.com/chubin/cheat.sh" target="_blank" rel="noopener">chubin/cheat.sh</a>: the only cheat sheet you need <a href="https://cheat.sh/" target="_blank" rel="noopener">https://cheat.sh/</a></li>
+<li><a href="https://github.com/toddmotto/public-apis" target="_blank" rel="noopener">toddmotto/public-apis</a>: A collective list of public JSON APIs for use in web development. <a href="https://toddmotto.com" target="_blank" rel="noopener">https://toddmotto.com</a></li>
+<li><a href="https://github.com/lionsoul2014/ip2region" target="_blank" rel="noopener">lionsoul2014/ip2region</a>: 准确率99.9%的ip地址定位库，0.0x毫秒级查询，数据库文件大小只有1.5M，提供了java,php,c,python,nodejs,golang,c#查询绑定和Binary,B树,内存三种查询算法，妈妈再也不用担心我的ip地址定位！ <a href="http://gitee.com/lionsoul/ip2region" target="_blank" rel="noopener">http://gitee.com/lionsoul/ip2region</a></li>
+<li><a href="https://github.com/google/data-transfer-project" target="_blank" rel="noopener">google/data-transfer-project</a>: Data Transfer. <a href="http://datatransferproject.dev" target="_blank" rel="noopener">http://datatransferproject.dev</a></li>
+<li><a href="https://github.com/nonoroazoro/vscode-syncing" target="_blank" rel="noopener">nonoroazoro/vscode-syncing</a>: VSCode Extension - Sync all of your VSCode settings across multiple devices. </li>
+<li><a href="https://github.com/nhnent/tui.image-editor" target="_blank" rel="noopener">nhnent/tui.image-editor</a>:  image editor using HTML5 Canvas. 可以在线编辑图像。</li>
+<li><a href="https://github.com/harc/moonchild" target="_blank" rel="noopener">harc/moonchild</a>: A toolkit for experimenting with new kinds of programming interfaces.</li>
+<li><a href="https://github.com/yeasy/docker_practice" target="_blank" rel="noopener">yeasy/docker_practice</a>: Learn and understand Docker technologies, with real DevOps practice!</li>
+<li><a href="https://github.com/rstacruz/cheatsheets" target="_blank" rel="noopener">rstacruz/cheatsheets</a>: My cheatsheets </li>
+<li><a href="https://github.com/tiimgreen/github-cheat-sheet" target="_blank" rel="noopener">tiimgreen/github-cheat-sheet</a>: A list of cool features of Git and GitHub. </li>
+<li><a href="https://github.com/wsargent/docker-cheat-sheet" target="_blank" rel="noopener">wsargent/docker-cheat-sheet</a>: Docker Cheat Sheet</li>
+<li><a href="https://github.com/Maximus5/ConEmu" target="_blank" rel="noopener">Maximus5/ConEmu</a>: Customizable Windows terminal with tabs, splits, quake-style, hotkeys and more</li>
+<li><a href="https://github.com/git/git" target="_blank" rel="noopener">git/git</a>: Git Source Code Mirror </li>
+<li><a href="https://github.com/unshiftio/url-parse" target="_blank" rel="noopener">unshiftio/url-parse</a>: Small footprint URL parser that works seamlessly across Node.js and browser environments. </li>
+<li><a href="https://github.com/521xueweihan/git-tips" target="_blank" rel="noopener">521xueweihan/git-tips</a>: Git的奇技淫巧</li>
+<li><a href="https://github.com/syncsynchalt/illustrated-tls" target="_blank" rel="noopener">syncsynchalt/illustrated-tls</a>: The Illustrated TLS Connection: Every byte explained</li>
+<li><a href="https://github.com/wcoder/highlightjs-line-numbers.js" target="_blank" rel="noopener">wcoder/highlightjs-line-numbers.js</a>: Line numbering plugin for Highlight.js </li>
+<li><a href="https://github.com/gabrie-allaigre/avatar-generator" target="_blank" rel="noopener">gabrie-allaigre/avatar-generator</a>: Avatar generator in Java</li>
+<li><a href="https://github.com/googleapis/googleapis" target="_blank" rel="noopener">googleapis/googleapis</a>: Public interface definitions of Google APIs.</li>
+<li><a href="https://github.com/centic9/jgit-cookbook" target="_blank" rel="noopener">centic9/jgit-cookbook</a>: Provides examples and code snippets for the JGit Java Git implementation</li>
+<li><a href="https://github.com/res0nat0r/gitosis" target="_blank" rel="noopener">res0nat0r/gitosis</a>: Manage git repositories, provide access to them over SSH, with tight access control and not needing shell accounts. </li>
+<li><a href="https://github.com/so-fancy/diff-so-fancy" target="_blank" rel="noopener">so-fancy/diff-so-fancy</a>: Good-lookin’ diffs. Actually… nah… The best-lookin’ diffs. </li>
+<li><a href="https://github.com/apache/incubator-dubbo" target="_blank" rel="noopener">apache/incubator-dubbo</a>: Apache Dubbo (incubating) is a high-performance, java based, open source RPC framework. </li>
+<li><a href="https://github.com/sallar/github-contributions-chart" target="_blank" rel="noopener">sallar/github-contributions-chart</a>: Generate an image of all your Github contributions </li>
+<li><a href="https://github.com/antirez/redis" target="_blank" rel="noopener">antirez/redis</a>: Redis is an in-memory database that persists on disk. </li>
+<li><a href="https://github.com/neilpa/cmd-colors-solarized" target="_blank" rel="noopener">neilpa/cmd-colors-solarized</a>: Solarized color settings for Windows command prompt</li>
+<li><a href="https://github.com/TheNetAdmin/Makefile-Templates" target="_blank" rel="noopener">TheNetAdmin/Makefile-Templates</a>: Some makefile templates for different size of projects</li>
+<li><a href="https://github.com/honza/vim-snippets" target="_blank" rel="noopener">honza/vim-snippets</a>: vim-snipmate default snippets</li>
+<li><a href="https://github.com/felixrieseberg/windows95" target="_blank" rel="noopener">felixrieseberg/windows95</a>:  Windows 95 in Electron. Runs on macOS, Linux, and Windows.</li>
+<li><a href="https://github.com/google/tink" target="_blank" rel="noopener">google/tink</a>: Tink is a multi-language, cross-platform library that provides cryptographic APIs that are secure, easy to use correctly, and hard(er) to misuse.</li>
+</ul>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><ul>
+<li><a href="https://github.com/24OI/OI-wiki" target="_blank" rel="noopener">24OI/OI-wiki</a>: Wiki for OI / ACM-ICPC. （某大型游戏线上攻略，内含炫酷算术魔法）</li>
+</ul>
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><ul>
+<li><a href="https://github.com/tikv/tikv" target="_blank" rel="noopener">tikv/tikv</a>: Distributed transactional key-value database, originally created to complement TiDB </li>
+<li><a href="https://github.com/pingcap/tidb" target="_blank" rel="noopener">pingcap/tidb</a>: TiDB is a distributed HTAP database compatible with the MySQL protocol</li>
+</ul>
+<h2 id="computer-graphics"><a href="#computer-graphics" class="headerlink" title="computer-graphics"></a>computer-graphics</h2><ul>
+<li><a href="https://github.com/karimnaaji/3d-quickhull" target="_blank" rel="noopener">karimnaaji/3d-quickhull</a>: Header only 3d quickhull in c99</li>
+</ul>
+<h2 id="machine-learning"><a href="#machine-learning" class="headerlink" title="machine learning"></a>machine learning</h2><ul>
+<li><a href="https://github.com/candlewill/Dialog_Corpus" target="_blank" rel="noopener">candlewill/Dialog_Corpus</a>: 用于训练中英文对话系统的语料库 Datasets for Training Chatbot System</li>
+<li><a href="https://github.com/vipstone/faceai" target="_blank" rel="noopener">vipstone/faceai</a>: 一款入门级的人脸、视频、文字检测以及识别的项目.</li>
+<li><a href="https://github.com/MorvanZhou/tutorials" target="_blank" rel="noopener">MorvanZhou/tutorials</a>: 机器学习相关教程</li>
+<li><a href="https://github.com/kailashahirwar/cheatsheets-ai" target="_blank" rel="noopener">kailashahirwar/cheatsheets-ai</a>: Essential Cheat Sheets for deep learning and machine learning researchers </li>
+</ul>
+<h2 id="funny"><a href="#funny" class="headerlink" title="funny"></a>funny</h2><ul>
+<li><a href="https://github.com/skygragon/leetcode-cli" target="_blank" rel="noopener">skygragon/leetcode-cli</a>: 命令行里刷 leetcode。感觉很好玩。</li>
+<li><a href="https://github.com/jsonresume/resume-cli" target="_blank" rel="noopener">jsonresume/resume-cli</a>: 用 json 写简历。可惜不支持中文(当时我还以为发现宝了)。。以后写英文 resume 可能用得到</li>
+<li><a href="https://github.com/posquit0/Awesome-CV" target="_blank" rel="noopener">posquit0/Awesome-CV</a>: 用 latex 写简历。可惜对中文的解析是硬伤</li>
+<li><a href="https://github.com/interagent/http-api-design" target="_blank" rel="noopener">ypwhs/captcha_break</a>: 用深度学习识别验证码</li>
+<li><a href="https://github.com/Ovilia/lipstick" target="_blank" rel="noopener">Ovilia/lipstick</a>: 口红颜色可视化</li>
+<li><a href="https://github.com/tuna/blogroll" target="_blank" rel="noopener">tuna/blogroll</a>: 好多人的博客。。</li>
+<li><a href="https://github.com/imyelo/pokequest-wiki" target="_blank" rel="noopener">imyelo/pokequest-wiki</a>: Pokémon Quest Dex designed for Web / 方可梦图鉴</li>
+<li><a href="https://github.com/wuzhiyi/guide-to-the-douban" target="_blank" rel="noopener">wuzhiyi/guide-to-the-douban</a>: 豆瓣漫游指南</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/algorithm/">Algorithm</a></li>
+         
+          <li><a href="/tool/">Tool</a></li>
+         
+          <li><a href="/gist/">Gist</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#learning"><span class="toc-number">1.</span> <span class="toc-text">learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resource"><span class="toc-number">2.</span> <span class="toc-text">resource</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wechat-develope"><span class="toc-number">3.</span> <span class="toc-text">wechat develope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-number">4.</span> <span class="toc-text">JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScrit"><span class="toc-number">5.</span> <span class="toc-text">TypeScrit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Julia"><span class="toc-number">6.</span> <span class="toc-text">Julia</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-number">7.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown"><span class="toc-number">8.</span> <span class="toc-text">markdown</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">9.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Golang"><span class="toc-number">10.</span> <span class="toc-text">Golang</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-number">11.</span> <span class="toc-text">Python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#blockchain"><span class="toc-number">12.</span> <span class="toc-text">blockchain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PowerShell"><span class="toc-number">13.</span> <span class="toc-text">PowerShell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">14.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go"><span class="toc-number">15.</span> <span class="toc-text">Go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust"><span class="toc-number">16.</span> <span class="toc-text">Rust</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Csharp"><span class="toc-number">17.</span> <span class="toc-text">Csharp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Assembly"><span class="toc-number">18.</span> <span class="toc-text">Assembly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tools"><span class="toc-number">19.</span> <span class="toc-text">tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-number">20.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Database"><span class="toc-number">21.</span> <span class="toc-text">Database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#computer-graphics"><span class="toc-number">22.</span> <span class="toc-text">computer-graphics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#machine-learning"><span class="toc-number">23.</span> <span class="toc-text">machine learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#funny"><span class="toc-number">24.</span> <span class="toc-text">funny</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&text=charming star repositories"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&is_video=false&description=charming star repositories"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=charming star repositories&body=Check out this article: https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&title=charming star repositories"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/05/01/charming-star-repositories/&name=charming star repositories&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 pwxcoo
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/algorithm/">Algorithm</a></li>
+         
+          <li><a href="/tool/">Tool</a></li>
+         
+          <li><a href="/gist/">Gist</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- mathjax -->
+<script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=default">
+  MathJax.Hub.Config({
+   tex2jax: {
+   inlineMath: [['$','$'],["\\(","\\)"]],
+   displayMath: [['\\[','\\]'], ['$$','$$']],
+   },
+});
+</script>
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-123052529-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'pwxcoo';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

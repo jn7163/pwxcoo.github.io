@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="目的是构建了简单 C/C++ 环境，用于小项目（比如算法题）。 为什么用 visual studio code 写 C/C++因为我是 visual studio code 的粉丝。这是我用过最快乐的编辑器了。 因为平时写 C/C++ 代码都是为了写算法题而写的，之前在 Windows 上用的 vs，感觉用了牛刀。。不过 vs 的调试功能给以前弱智的我有很大的帮助。。 后来在 Ubuntu 上都是">
+<meta name="keywords" content="visual studio code,c++,c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="visual studio code配置C&#x2F;C++环境">
+<meta property="og:url" content="https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/index.html">
+<meta property="og:site_name" content="PWXCOO">
+<meta property="og:description" content="目的是构建了简单 C/C++ 环境，用于小项目（比如算法题）。 为什么用 visual studio code 写 C/C++因为我是 visual studio code 的粉丝。这是我用过最快乐的编辑器了。 因为平时写 C/C++ 代码都是为了写算法题而写的，之前在 Windows 上用的 vs，感觉用了牛刀。。不过 vs 的调试功能给以前弱智的我有很大的帮助。。 后来在 Ubuntu 上都是">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-11-16T05:22:47.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="visual studio code配置C&#x2F;C++环境">
+<meta name="twitter:description" content="目的是构建了简单 C/C++ 环境，用于小项目（比如算法题）。 为什么用 visual studio code 写 C/C++因为我是 visual studio code 的粉丝。这是我用过最快乐的编辑器了。 因为平时写 C/C++ 代码都是为了写算法题而写的，之前在 Windows 上用的 vs，感觉用了牛刀。。不过 vs 的调试功能给以前弱智的我有很大的帮助。。 后来在 Ubuntu 上都是">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>visual studio code配置C/C++环境</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="PWXCOO" type="application/atom+xml" /><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+<body class="max-width mx-auto px3 ">
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/algorithm/">Algorithm</a></li>
+         
+          <li><a href="/tool/">Tool</a></li>
+         
+          <li><a href="/gist/">Gist</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/08/31/浅谈HashMap和ConcurrentHashMap/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/08/27/浅谈数据库索引——一条sql语句引发的血案/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&text=visual studio code配置C/C++环境"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&is_video=false&description=visual studio code配置C/C++环境"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=visual studio code配置C/C++环境&body=Check out this article: https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&name=visual studio code配置C/C++环境&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么用-visual-studio-code-写-C-C"><span class="toc-number">1.</span> <span class="toc-text">为什么用 visual studio code 写 C/C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerequisite"><span class="toc-number">2.</span> <span class="toc-text">Prerequisite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration"><span class="toc-number">3.</span> <span class="toc-text">Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        visual studio code配置C/C++环境
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">PWXCOO</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-08-28T14:51:56.000Z" itemprop="datePublished">2018-08-28</time>
+    </div>
+
+
+      
+    <!-- <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/mome/">mome</a>
+    </div> -->
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/c/">c</a>, <a class="tag-link" href="/tags/c/">c++</a>, <a class="tag-link" href="/tags/visual-studio-code/">visual studio code</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>目的是构建了简单 C/C++ 环境，用于小项目（比如算法题）。</p>
+<h2 id="为什么用-visual-studio-code-写-C-C"><a href="#为什么用-visual-studio-code-写-C-C" class="headerlink" title="为什么用 visual studio code 写 C/C++"></a>为什么用 visual studio code 写 C/C++</h2><p>因为我是 visual studio code 的粉丝。这是我用过最快乐的编辑器了。</p>
+<p>因为平时写 C/C++ 代码都是为了写算法题而写的，之前在 Windows 上用的 vs，感觉用了牛刀。。不过 vs 的调试功能给以前弱智的我有很大的帮助。。</p>
+<p>后来在 Ubuntu 上都是用的 codeblocks 或者直接用 vim 开撸。。不知道为什么我真的对 vim 爱不起来，尝试放弃尝试放弃无数次，感觉只能是大概知道 vim 怎么用，但是作为日常编辑器感觉还是喜欢 vscode。。</p>
+<p>第一次用 vscode 的时候，尝试过用 vscode 写 C/C++，但是那时候感觉体验有点糟糕。。后来貌似微软团队对 C/C++ 对了改进的，现在感觉还行，实在不行，就继续之前码完就 <code>g++ -Wall -std=c++11 main.cpp</code>。。。</p>
+<h2 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h2><p>下 C/C++ 这个扩展，Microsoft 官方出品的这个。</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>下面所有的 vscode 命令用 <code>Ctrl + Alt + P</code> 打开 vscode 的工具窗口输入。</p>
+<ul>
+<li><code>C/CPP: Edit Configuration</code> =&gt; 生成一个 <code>c_cpp_properities.json</code> 。</li>
+<li><p><code>Task: Configure Task Runner</code> =&gt; 选择 Other （当然如果要用 MSBuild 也可以，不过我自己用的是 g++，所以选了 Other =&gt; 生成 <code>task.json</code>。</p>
+<p>  这里的 <code>task.json</code> 需要自己配置一下，我直接用的 vscode 的 snippet 功能的，贴一下我的 snippet（我的 json.json）：</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // Place your snippets for JSON here. Each snippet is defined under a snippet name and has a prefix, body and </span><br><span class="line">    // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:</span><br><span class="line">    // $1, $2 for tab stops, $0 for the final cursor position, and $&#123;1:label&#125;, $&#123;2:another&#125; for placeholders. Placeholders with the </span><br><span class="line">    // same ids are connected.</span><br><span class="line">    // Example:</span><br><span class="line">    "cpp tasks": &#123;</span><br><span class="line">        "prefix": "cpptask",</span><br><span class="line">        "body": [</span><br><span class="line">        "&#123;",</span><br><span class="line">        "   \"label\": \"build\",",</span><br><span class="line">        "   \"command\": \"g++\",",</span><br><span class="line">        "   \"args\": [",</span><br><span class="line">        "       \"-std=c++11\",",</span><br><span class="line">        "      \"$1\",",</span><br><span class="line">        "      \"-o a.out\"",</span><br><span class="line">        "   ],",</span><br><span class="line">        "   \"type\": \"shell\"",</span><br><span class="line">        "&#125;,",</span><br><span class="line">        "&#123;",</span><br><span class="line">        "   \"label\": \"build-debug\",",</span><br><span class="line">        "   \"command\": \"g++\",",</span><br><span class="line">        "   \"args\": [",</span><br><span class="line">        "      \"-g\",",</span><br><span class="line">        "      \"-std=c++11\",",</span><br><span class="line">        "      \"$2\",",</span><br><span class="line">        "      \"-o a.out\"",</span><br><span class="line">        "   ],",</span><br><span class="line">        "   \"type\": \"shell\"",</span><br><span class="line">        <span class="string">"&#125;"</span></span><br><span class="line">        ],</span><br><span class="line">        "description": "Log output to console"</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  用的 snippet 就减少重复的工作量了，直接输入 <code>cpptask</code> 就能生成一个 customize 的 snippet。然后自己写一下需要编译的 cpp 文件名就可以了，最后生成的 task.json 大概是这样的：</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    "version": "2.0.0",</span><br><span class="line">    "tasks": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"echo"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"echo Hello"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"label"</span>: <span class="string">"build"</span>,</span><br><span class="line">        <span class="attr">"command"</span>: <span class="string">"g++"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: [</span><br><span class="line">            <span class="string">"-std=c++11"</span>,</span><br><span class="line">            <span class="string">"./LRU/lru.cpp"</span>,</span><br><span class="line">            <span class="string">"-o a.out"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"shell"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">"label"</span>: <span class="string">"build-debug"</span>,</span><br><span class="line">        <span class="attr">"command"</span>: <span class="string">"g++"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: [</span><br><span class="line">            <span class="string">"-g"</span>,</span><br><span class="line">            <span class="string">"-std=c++11"</span>,</span><br><span class="line">            <span class="string">"./LRU/lru.cpp"</span>,</span><br><span class="line">            <span class="string">"-o a.out"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"shell"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后就可以编译了，输入 <code>Tasks: Run Tasks</code> =&gt; <code>build</code> 然后编译完成，看到目标文件，执行就好了。</p>
+</li>
+<li><p>调试的功能（因为可视化的调试比终端里调试舒服多了，这也是我不想用 vim 的理由。。）</p>
+<ul>
+<li><code>Ctrl + Shift + D</code> 然后点那个齿轮，就自动生成了一个 <code>launch.json</code> 文件 </li>
+<li>修改 <code>program</code> 里文件名</li>
+<li>加上一个 <code>preLaunchTask</code> 的字段，值为 <code>build-debug</code>，表示调试前先编译。</li>
+<li><p>最后的 <code>launch.json</code> 文件大概是这样的：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;workspaceFolder&#125;/a.out"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"build-debug"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后打断点，调试，就完事了。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>具体可以看 <a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">C/C++ for VS Code (Preview)</a>，官方的文档更详细。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">C/C++ for VS Code (Preview)</a></li>
+<li><a href="https://blog.csdn.net/wzxlovesy/article/details/76708151" target="_blank" rel="noopener">VS Code 配置 C/C++ 环境</a></li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/algorithm/">Algorithm</a></li>
+         
+          <li><a href="/tool/">Tool</a></li>
+         
+          <li><a href="/gist/">Gist</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么用-visual-studio-code-写-C-C"><span class="toc-number">1.</span> <span class="toc-text">为什么用 visual studio code 写 C/C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerequisite"><span class="toc-number">2.</span> <span class="toc-text">Prerequisite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration"><span class="toc-number">3.</span> <span class="toc-text">Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&text=visual studio code配置C/C++环境"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&is_video=false&description=visual studio code配置C/C++环境"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=visual studio code配置C/C++环境&body=Check out this article: https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&title=visual studio code配置C/C++环境"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/08/28/visual-studio-code配置C-C-环境/&name=visual studio code配置C/C++环境&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 pwxcoo
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/algorithm/">Algorithm</a></li>
+         
+          <li><a href="/tool/">Tool</a></li>
+         
+          <li><a href="/gist/">Gist</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- mathjax -->
+<script src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=default">
+  MathJax.Hub.Config({
+   tex2jax: {
+   inlineMath: [['$','$'],["\\(","\\)"]],
+   displayMath: [['\\[','\\]'], ['$$','$$']],
+   },
+});
+</script>
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-123052529-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'pwxcoo';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
