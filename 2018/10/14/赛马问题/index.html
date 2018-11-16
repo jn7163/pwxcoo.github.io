@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="错排问题是当 n 个编号元素放在 n 个编号位置，错排的方法数记着 f(n)。 因为之前面试的时候被问到了，感觉比较有意思，然后好像还挺常见的，所以就记一下好了。 其实就是动态规划，写出转移方程就好了。  当 f(n - 1) 然后在放第 n 个元素，此时，对 f(n - 1) 的任何一种情况，第 n 个元素和前 n - 1 个元素交换，都可以的。所以这里有 (n - 1)f(n - 1)。 当">
-<meta name="keywords" content="algorithm,dp">
+    <meta name="description" content="一道面试题。  一共 25 匹马，有 5 个赛道，最多有 5 匹马一起跑，最少几场得到最快的 5 匹马？   5 组 A，B，C，D，E，跑 5 次，并排上序。 每组头名再赛一场，得到这样一个矩阵，x 标记的表示已经淘汰了   123451 2 3 4 52 3 4 5 x3 4 5 x x4 5 x x x5 x x x x  然后再找出第二名，因为冠军确定了，所以在 5 个里找 4 个，最慢的">
+<meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="错排问题">
-<meta property="og:url" content="https://blog.pwxcoo.com/2018/10/16/错排问题/index.html">
+<meta property="og:title" content="赛马问题">
+<meta property="og:url" content="https://blog.pwxcoo.com/2018/10/14/赛马问题/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="错排问题是当 n 个编号元素放在 n 个编号位置，错排的方法数记着 f(n)。 因为之前面试的时候被问到了，感觉比较有意思，然后好像还挺常见的，所以就记一下好了。 其实就是动态规划，写出转移方程就好了。  当 f(n - 1) 然后在放第 n 个元素，此时，对 f(n - 1) 的任何一种情况，第 n 个元素和前 n - 1 个元素交换，都可以的。所以这里有 (n - 1)f(n - 1)。 当">
+<meta property="og:description" content="一道面试题。  一共 25 匹马，有 5 个赛道，最多有 5 匹马一起跑，最少几场得到最快的 5 匹马？   5 组 A，B，C，D，E，跑 5 次，并排上序。 每组头名再赛一场，得到这样一个矩阵，x 标记的表示已经淘汰了   123451 2 3 4 52 3 4 5 x3 4 5 x x4 5 x x x5 x x x x  然后再找出第二名，因为冠军确定了，所以在 5 个里找 4 个，最慢的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-16T06:27:49.990Z">
+<meta property="og:updated_time" content="2018-11-16T10:59:11.683Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="错排问题">
-<meta name="twitter:description" content="错排问题是当 n 个编号元素放在 n 个编号位置，错排的方法数记着 f(n)。 因为之前面试的时候被问到了，感觉比较有意思，然后好像还挺常见的，所以就记一下好了。 其实就是动态规划，写出转移方程就好了。  当 f(n - 1) 然后在放第 n 个元素，此时，对 f(n - 1) 的任何一种情况，第 n 个元素和前 n - 1 个元素交换，都可以的。所以这里有 (n - 1)f(n - 1)。 当">
+<meta name="twitter:title" content="赛马问题">
+<meta name="twitter:description" content="一道面试题。  一共 25 匹马，有 5 个赛道，最多有 5 匹马一起跑，最少几场得到最快的 5 匹马？   5 组 A，B，C，D，E，跑 5 次，并排上序。 每组头名再赛一场，得到这样一个矩阵，x 标记的表示已经淘汰了   123451 2 3 4 52 3 4 5 x3 4 5 x x4 5 x x x5 x x x x  然后再找出第二名，因为冠军确定了，所以在 5 个里找 4 个，最慢的">
     
     
         
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>错排问题</title>
+    <title>赛马问题</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -77,8 +77,10 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2018/10/16/错排问题/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        <li><a class="icon" href="/2018/10/14/赛马问题/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="/2018/09/29/鸡蛋下落问题/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -91,16 +93,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/10/16/错排问题/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&text=错排问题"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&is_video=false&description=错排问题"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=错排问题&body=Check out this article: https://blog.pwxcoo.com/2018/10/16/错排问题/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&name=错排问题&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/10/14/赛马问题/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&text=赛马问题"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&is_video=false&description=赛马问题"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=赛马问题&body=Check out this article: https://blog.pwxcoo.com/2018/10/14/赛马问题/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&name=赛马问题&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -117,7 +119,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        错排问题
+        赛马问题
     </h1>
 
 
@@ -128,7 +130,7 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2018-10-16T06:05:52.000Z" itemprop="datePublished">2018-10-16</time>
+        <time datetime="2018-10-14T10:31:41.000Z" itemprop="datePublished">2018-10-14</time>
     </div>
 
 
@@ -142,7 +144,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/algorithm/">algorithm</a>, <a class="tag-link" href="/tags/dp/">dp</a>
+        <a class="tag-link" href="/tags/algorithm/">algorithm</a>
     </div>
 
 
@@ -151,17 +153,17 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>错排问题是当 n 个编号元素放在 n 个编号位置，错排的方法数记着 <code>f(n)</code>。</p>
-<p>因为之前面试的时候被问到了，感觉比较有意思，然后好像还挺常见的，所以就记一下好了。</p>
-<p>其实就是动态规划，写出转移方程就好了。</p>
-<ol>
-<li>当 <code>f(n - 1)</code> 然后在放第 n 个元素，此时，对 <code>f(n - 1)</code> 的任何一种情况，第 n 个元素和前 n - 1 个元素交换，都可以的。所以这里有 <code>(n - 1)f(n - 1)</code>。</li>
-<li>当 n - 1 个元素里有一个元素在正确位置，此时为 <code>(n - 1)f(n - 2)</code> 个，此时只要第 n 个元素和其中的正确元素交换，就是一个错排。</li>
-</ol>
+    <p>一道面试题。</p>
+<blockquote>
+<p>一共 25 匹马，有 5 个赛道，最多有 5 匹马一起跑，最少几场得到最快的 5 匹马？</p>
+</blockquote>
 <ul>
-<li>$f(1) = 0$</li>
-<li>$f(2) = 1$</li>
-<li>$f(n) = (n - 1) [f(n - 2) + f(n - 1)]$</li>
+<li>5 组 A，B，C，D，E，跑 5 次，并排上序。</li>
+<li><p>每组头名再赛一场，得到这样一个矩阵，<code>x</code> 标记的表示已经淘汰了</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4 5</span><br><span class="line">2 3 4 5 x</span><br><span class="line">3 4 5 x x</span><br><span class="line">4 5 x x x</span><br><span class="line">5 x x x x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后再找出第二名，因为冠军确定了，所以在 5 个里找 4 个，最慢的那个，那组直接全部淘汰，以此类推，<strong>最多比赛 10 场</strong></p>
+</li>
 </ul>
 
   </div>
@@ -203,16 +205,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/10/16/错排问题/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&text=错排问题"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&is_video=false&description=错排问题"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=错排问题&body=Check out this article: https://blog.pwxcoo.com/2018/10/16/错排问题/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&title=错排问题"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/10/16/错排问题/&name=错排问题&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2018/10/14/赛马问题/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&text=赛马问题"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&is_video=false&description=赛马问题"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=赛马问题&body=Check out this article: https://blog.pwxcoo.com/2018/10/14/赛马问题/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&title=赛马问题"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2018/10/14/赛马问题/&name=赛马问题&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
