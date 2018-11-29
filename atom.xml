@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.pwxcoo.com/"/>
-  <updated>2018-11-16T06:27:49.000Z</updated>
+  <updated>2018-11-29T14:45:21.472Z</updated>
   <id>https://blog.pwxcoo.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈随机数</title>
+    <link href="https://blog.pwxcoo.com/2018/11/29/%E6%B5%85%E8%B0%88%E9%9A%8F%E6%9C%BA%E6%95%B0/"/>
+    <id>https://blog.pwxcoo.com/2018/11/29/浅谈随机数/</id>
+    <published>2018-11-29T14:24:16.000Z</published>
+    <updated>2018-11-29T14:45:21.472Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="伪随机数"><a href="#伪随机数" class="headerlink" title="伪随机数"></a>伪随机数</h2><p>通常编程语言中提供的随机数都是伪随机数，因为都是给定一个种子，然后多项式运算然后这样的，这种提供的随机数是有规律可预测的。</p><p>一个最简单的 C 语言随机数 snippet。但是每次执行的结果都是一样的，因为传入的种子是一样的。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> random = rand();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,random);</span><br><span class="line">    random = rand();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,random);</span><br><span class="line">    random = rand();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,random);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><p>真正的随机数应该是完全不可预测的，通常可以用 linux 下的 <code>/dev/random</code> 或 <code>/dev/urandom</code> 做真随机数生成器。</p><p>这是基于 linux 系统管理 devices 所产生的噪声的，比如磁盘寻道事件，键鼠事件等，因为这些事件噪声很高，熵足够高，所以可以认为是真随机。</p><ul><li><code>/dev/random</code> 用 cat 看一下可以发现知道生成随机数，不够的话就会阻塞。</li><li><code>/dev/urandom</code> 是用之前 <code>/dev/random</code> 生成过的直接返回。</li></ul><p>当然还有一个 <a href="https://www.random.org/" target="_blank" rel="noopener">random.org</a> 的网站，网站提供真随机数，说是通过 <code>atmospheric noise</code> 来提供随机数的。</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://www.zhihu.com/question/20222653" target="_blank" rel="noopener">如何评价一个伪随机数生成算法的优劣？</a></li></ul><h2 id="今天"><a href="#今天" class="headerlink" title="今天"></a>今天</h2><p>换了新电脑 ThinkPadX1C 好开心阿。好轻阿。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="base" scheme="https://blog.pwxcoo.com/categories/base/"/>
+    
+    
+      <category term="base" scheme="https://blog.pwxcoo.com/tags/base/"/>
+    
+  </entry>
   
   <entry>
     <title>错排问题</title>
@@ -390,9 +418,9 @@
       <category term="tech" scheme="https://blog.pwxcoo.com/categories/tech/"/>
     
     
-      <category term="java" scheme="https://blog.pwxcoo.com/tags/java/"/>
-    
       <category term="data structure" scheme="https://blog.pwxcoo.com/tags/data-structure/"/>
+    
+      <category term="java" scheme="https://blog.pwxcoo.com/tags/java/"/>
     
   </entry>
   
@@ -569,34 +597,6 @@
       <category term="ssh" scheme="https://blog.pwxcoo.com/tags/ssh/"/>
     
       <category term="git" scheme="https://blog.pwxcoo.com/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Internal Compiler Error</title>
-    <link href="https://blog.pwxcoo.com/2018/07/10/Internal%20Compiler%20Error/"/>
-    <id>https://blog.pwxcoo.com/2018/07/10/Internal Compiler Error/</id>
-    <published>2018-07-10T14:11:04.000Z</published>
-    <updated>2018-11-16T05:22:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>There is nothing to say here.</p><!-- ## 汇编和寒假转眼之间，在微软 3 个月实习已经过了一半了，今年上半年可以说是很纠结的一年了，寒假的时候了解了一下汇编和编译原理（因为没选到这门课），看了 Stanford 的那节 CS143 Compiler 那节课，最后的 assignment 是做一个 Cool 语言的编译器。Cool 是 Stanford 的老师为了这门课自己设计的一个面向对象的程序语言。后来折腾了很久，因为 MIPS 汇编语言的资料不是很充足，加上自己的基础并不好和寒假时间也不多，最后没能完成这个 assignment，算是比较遗憾的一件事吧。希望如果以后有空，能重新捡起这个来。好处是学了汇编和编译原理的一些知识后，对编程语言有了全新的理解，看到一个 syntax，总想把它 parse 成汇编代码，让我对高级语言最后怎么解析成汇编语言有了更 detail 的认知。同时对寄存器，内存分配，程序的一些概念有了更为深刻的一些理解。不过我学校把这个设为选修课，并且还不是我专业的专选课。。。（虽然就算是专选课也是水得不行，感觉还可能坑的一匹。。不如不是好了。。）----## 春招和考研开学前给阿里投了简历，投的是 Java 开发实习生。我也是惊了，面了才知道自己这么菜，其实自己对于 Java，真的只是会 syntax 而已。。果然面了两轮就挂了。。太菜了，不挂我挂谁。。还给网易游戏投了一份，石沉大海，然后在我入职微软几天后给我发了感谢信。。春找没投几家，阿里最早面的，也是最早挂的。挂了之后感觉自己实在太菜，根本没机会。。BAT 也就投了一家杭州的 A 。剩下的也不敢投了。。阿里挂了之后开始准备考研，在考研教室学习了一个多月，后来收到微软的 offer，放弃了考研。。备考了一个多月的考研之后对研究生还是很向往的，因为学生有很多自己的 free time 可以支配，同时我也更向往一个高级学府。微软的面试体验还是很棒的。我还记得我是今年 3 月 31 号做的微软笔试题，去年微软有个预苗计划，当时也是 3 月 31 号，我参加了，可是去年太菜了，去年我还记得那天去武汉玩，到了之后用老二电脑电脑做的笔试题，直接爆零。。gg思密达。。今年过了笔试之后，因为我邮箱填错了，没收到 onsite 的面试邮件。。后来 hr 打电话来找到我让我去 onsite 面试，可以说是很感动了。微软的面试题目没什么印象了，就是一直做题，还做了一道智力题，比较有意思，所以印象深刻。其实我感觉我 onsite 面试表现还是不错的，感觉比自己电话面试的时候发挥好一些。。然后微软就是做算法题，感觉自己比较 fit 这个面试模式吧。在微软实习也遇到很多研究生和留学生，大部分都是研究生和留学生吧。也是很羡慕别人 3 年研究生生活或者留学生生活的。## 杂还记得面试的时候，面试官问我对什么感兴趣，我说我对什么都挺感兴趣的。其实我真的对什么都很感兴趣。无论是前端，后端还是算法。 -->]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-      <category term="nuisance" scheme="https://blog.pwxcoo.com/categories/nuisance/"/>
-    
-    
-      <category term="essay" scheme="https://blog.pwxcoo.com/tags/essay/"/>
     
   </entry>
   
