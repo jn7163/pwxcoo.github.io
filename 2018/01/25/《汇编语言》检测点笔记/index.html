@@ -14,12 +14,12 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="之前一直觉得《汇编语言》很秀。Assembly Language 阿。本来下个学期选修想选那门“微机接口和汇编语言”。但这个学期以为要挂的选修课，老师还是给了面子。所以学分讲道理是够了。斟酌了一下，决定自己看书爽一爽《汇编》。 果断选择了王爽的《汇编语言（第三版）》。 因为是有习题的，所以把习题就顺便记录了下来。 前面 11 章的答案我都 debug 验证过了，网上的答案有很多错误。从 12 章开">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p1pws2aca.bkt.clouddn.com/assembly3.6.png">
-<meta property="og:updated_time" content="2018-11-16T05:22:47.000Z">
+<meta property="og:image" content="https://i.loli.net/2018/12/05/5c074a1f5f1ec.png">
+<meta property="og:updated_time" content="2018-12-05T03:46:47.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《汇编语言》检测点笔记">
 <meta name="twitter:description" content="之前一直觉得《汇编语言》很秀。Assembly Language 阿。本来下个学期选修想选那门“微机接口和汇编语言”。但这个学期以为要挂的选修课，老师还是给了面子。所以学分讲道理是够了。斟酌了一下，决定自己看书爽一爽《汇编》。 果断选择了王爽的《汇编语言（第三版）》。 因为是有习题的，所以把习题就顺便记录了下来。 前面 11 章的答案我都 debug 验证过了，网上的答案有很多错误。从 12 章开">
-<meta name="twitter:image" content="http://p1pws2aca.bkt.clouddn.com/assembly3.6.png">
+<meta name="twitter:image" content="https://i.loli.net/2018/12/05/5c074a1f5f1ec.png">
     
     
         
@@ -190,7 +190,7 @@
 <p>下面的程序执行前，AX=0,BX=0,写出每条汇编指令执行完后相关寄存器中的值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mov ax,1          </span><br><span class="line">mov ds,ax         ; 将段地址ds设置为0001</span><br><span class="line">mov ax,[0000]     ; AX=`2662H`</span><br><span class="line">mov bx,[0001]     ; BX=`E626H`</span><br><span class="line">mov ax,bx         ; AX=`E626H`</span><br><span class="line">mov ax,[0000]     ; AX=`2662H`</span><br><span class="line">mov bx,[0002]     ; BX=`D6E6H`   </span><br><span class="line">add ax,bx         ; AX=`FD48H`</span><br><span class="line">add ax,[0004]     ; AX=`2C14H`</span><br><span class="line">mov ax,0          ; AX=`0000H`</span><br><span class="line">mov al,[0002]     ; AX=`00E6H`</span><br><span class="line">mov bx,0          ; BX=`0000H`</span><br><span class="line">mov bl,[000C]     ; BX=`0026H`</span><br><span class="line">add al,bl         ; AX=`000CH`</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>内存中的情况如图3.6所示。<br>各寄存器的初始值：CS=2000H， IP=0, DS=1000H, AX=0, BX=0;<br><img src="http://p1pws2aca.bkt.clouddn.com/assembly3.6.png" alt="图3.6"></li>
+<li>内存中的情况如图3.6所示。<br>各寄存器的初始值：CS=2000H， IP=0, DS=1000H, AX=0, BX=0;<br><img src="https://i.loli.net/2018/12/05/5c074a1f5f1ec.png" alt="图3.6"></li>
 </ol>
 <ul>
 <li>写出CPU执行的指令序列（用汇编指令写出）</li>
