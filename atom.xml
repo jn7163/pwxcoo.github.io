@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.pwxcoo.com/"/>
-  <updated>2018-11-29T14:45:21.472Z</updated>
+  <updated>2018-12-07T12:16:44.898Z</updated>
   <id>https://blog.pwxcoo.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>makefile和常见gcc参数</title>
+    <link href="https://blog.pwxcoo.com/2018/12/07/makefile%E5%92%8C%E5%B8%B8%E8%A7%81gcc%E5%8F%82%E6%95%B0/"/>
+    <id>https://blog.pwxcoo.com/2018/12/07/makefile和常见gcc参数/</id>
+    <published>2018-12-07T11:40:59.000Z</published>
+    <updated>2018-12-07T12:16:44.898Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="makefile"><a href="#makefile" class="headerlink" title="makefile"></a>makefile</h2><p>makefile 的大概规则模板：</p><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">command</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>好，就是上面这种样子。讲完了。</p><hr><p><strong>makefile 的原理就是根据 target 文件和 prerequisites 文件修改时间的值来确定 target 文件是否需要重新编译。</strong></p><p>而且 prerequisites 也有 prerequisites’s prerequisites 的。makefile 文件首先去寻找 prerequisites，如果没有继续递归寻找，过程有点像堆栈的过程，编译的过程有点像拓扑排序的一个过程。</p><p>但是 makefile 有一些 tricks 的，所以经常看到一些复杂工程文件的 makefile 很大。</p><p>然后有些可以提一下常用的一些东西。</p><ul><li><code>\</code> 用来换行</li><li>makefile 中使用变量，用 <code>$(variable)</code> 就可以用了</li><li><code>.PHONY</code> 指明某个 label 是伪目标文件，防止 makefile 中定义的目标和实际工作目录下的实际文件名出现冲突  <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure></li></ul><p>一个最简单的 makefile 例子：</p><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CXX = g++</span><br><span class="line">CFLAGS= --std=c++11</span><br><span class="line">SOURCE = lexer.cpp</span><br><span class="line">DEPS = lexer.h</span><br><span class="line">TARGET = lexer</span><br><span class="line"></span><br><span class="line"><span class="variable">$(TARGET)</span>: <span class="variable">$(SOURCE)</span> <span class="variable">$(DEPS)</span></span><br><span class="line"><span class="variable">$(CXX)</span> <span class="variable">$(CFLAGS)</span> <span class="variable">$(SOURCE)</span> -o <span class="variable">$(TARGET)</span></span><br><span class="line">strip <span class="variable">$(TARGET)</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">rm <span class="variable">$(TARGET)</span></span><br></pre></td></tr></table></figure><p>复杂的话，github 上有很多 makefile 的模板。</p><h2 id="GCC参数"><a href="#GCC参数" class="headerlink" title="GCC参数"></a>GCC参数</h2><ul><li><code>x</code> 指明使用语言的参数<ul><li>‘c’, ‘objective-c’, ‘c-header’, ‘c++’, ‘cpp-output’, ‘assembler’, ‘assembler-with-cpp’</li></ul></li><li><code>c</code> 预处理，编译，汇编 =&gt; obj 文件</li><li><code>S</code> 预处理和编译 =&gt; 汇编代码</li><li><p><code>E</code> 预处理，不生成文件，需要重定向到一个文件里</p>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -E hello.c &gt; pianoapan.txt </span><br><span class="line">gcc -E hello.c | more</span><br></pre></td></tr></table></figure></li><li><p><code>o</code> 编译成可执行文件</p></li><li><code>-O0 、-O1 、-O2 、-O3</code> 编译器优化，<code>O1</code> 缺省，<code>O3</code>级别最高</li><li><code>g</code> 产生调试信息</li><li><code>Wall</code> 生成所有 warning / <code>w</code> 不生成 warning</li></ul><h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><p>阿，后天回学校了。今年也马上要到头了，最近有点烦恼阿。</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="http://wiki.ubuntu.org.cn/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%86%99Makefile:MakeFile%E4%BB%8B%E7%BB%8D" target="_blank" rel="noopener">跟我一起写Makefile:MakeFile介绍</a></li><li><a href="http://www.runoob.com/w3cnote/gcc-parameter-detail.html" target="_blank" rel="noopener">GCC参数详解</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="memo" scheme="https://blog.pwxcoo.com/categories/memo/"/>
+    
+    
+      <category term="linux" scheme="https://blog.pwxcoo.com/tags/linux/"/>
+    
+      <category term="gcc" scheme="https://blog.pwxcoo.com/tags/gcc/"/>
+    
+      <category term="makefile" scheme="https://blog.pwxcoo.com/tags/makefile/"/>
+    
+  </entry>
   
   <entry>
     <title>浅谈随机数</title>
@@ -567,36 +599,6 @@
     
     
       <category term="algorithm" scheme="https://blog.pwxcoo.com/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Manage a Series of SSH Keys</title>
-    <link href="https://blog.pwxcoo.com/2018/07/15/Manage%20a%20Series%20of%20SSH%20Keys/"/>
-    <id>https://blog.pwxcoo.com/2018/07/15/Manage a Series of SSH Keys/</id>
-    <published>2018-07-15T14:18:47.000Z</published>
-    <updated>2018-11-16T05:22:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>因为 <code>ssh</code> 用起来太爽了，很多的时候生成了一堆 <code>ssh</code> 私钥，如何在一台设备上管理多个 <code>ssh</code> 私钥。</p><p>起因是想在公司电脑上管理两个 git account。一个公司的，一个自己的，然后配置了半天。。。主要还是因为 CSDN 那几篇博客有点坑（说 config 里 Host 是可以随便设置，却没提到 Host 是 ssh 开连接找路由的入口。。）。。每次都 authentication 失败。。不过后来在 Stackoverflow 上找到原因了。。感觉 zz。</p><h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><p>删除 global config 设置:(不过好像不删也没什么关系？因为讲道理 local config 是可以覆盖 global config 的)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">$ git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></p><p>然后给每个 repository 设置自己的 local config:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.email <span class="string">"example@email.com"</span></span><br><span class="line">git config user.name <span class="string">"your_name"</span></span><br></pre></td></tr></table></figure></p><h2 id="Generation"><a href="#Generation" class="headerlink" title="Generation"></a>Generation</h2><p>生成 <code>ssh</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"example@email.com"</span></span><br></pre></td></tr></table></figure></p><p>会提示要不要覆盖原来的 <code>id_rsa</code>，当然是不要，重新开一个名字，比如 <code>id_rsa_github</code> 这样子。</p><p>然后在对应的 git server 上加上自己的公钥。</p><h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>在 <code>~/.ssh/</code> 目录下新建一个 config 文件，然后写配置文件。</p><p>很多博客没提到 Host 是路由，而是说 HostName 要写上目标网站，于是我一开始就以为 ssh 是通过 HostName 找 server 的。。其实 Host 是 ssh 找连接的路由，两个都是 ssh 连接时要用到的。</p><p>我的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">User git</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line">Host vs-ssh.visualstudio.com</span><br><span class="line">HostName vs-ssh.visualstudio.com</span><br><span class="line">User t-xiwu</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p><h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>用 <code>ssh</code> 连一下就知道有没有成功了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure></p><p>具体信息可以加个 <code>v</code> 的选项就可以了，就是 <code>verbose</code> ，可以用来调试，看看哪里出错了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -Tv git@github.com</span><br></pre></td></tr></table></figure></p><p>更具体的可以用 <code>vvv</code>，更详细的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -vvv git@github.com</span><br></pre></td></tr></table></figure></p><p>我最后就是这样子，然后带着错误信息在 Stackoverflow 找到了 Solution。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-      <category term="record" scheme="https://blog.pwxcoo.com/categories/record/"/>
-    
-    
-      <category term="ssh" scheme="https://blog.pwxcoo.com/tags/ssh/"/>
-    
-      <category term="git" scheme="https://blog.pwxcoo.com/tags/git/"/>
     
   </entry>
   
