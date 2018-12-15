@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="因为前几天笔试题的时候，让我手算 CRC 校验。。然后今天随手写了一个 CRC 校验的脚本。 当然了，现实中的 CRC 校验是在数据链路层实现的，都是硬件完成的，我只是模拟一下 CRC 校验的过程。 CRC简介现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 比特差错。传输错误的比特占比特总数的比率叫做 误码率 BER（Bit Error R">
+    <meta name="description" content="因为前几天笔试题的时候，让我手算 CRC 校验。。然后今天随手写了一个 CRC 校验的脚本。 当然了，现实中的 CRC 校验是在数据链路层实现的，都是硬件完成的，我只是模拟一下 CRC 校验的过程。 CRC简介现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 比特差错。传输错误的比特占比特总数的比率叫做 误码率 BER (Bit Error">
 <meta name="keywords" content="computer network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CRC校验">
 <meta property="og:url" content="https://blog.pwxcoo.com/2018/09/08/CRC校验/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="因为前几天笔试题的时候，让我手算 CRC 校验。。然后今天随手写了一个 CRC 校验的脚本。 当然了，现实中的 CRC 校验是在数据链路层实现的，都是硬件完成的，我只是模拟一下 CRC 校验的过程。 CRC简介现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 比特差错。传输错误的比特占比特总数的比率叫做 误码率 BER（Bit Error R">
+<meta property="og:description" content="因为前几天笔试题的时候，让我手算 CRC 校验。。然后今天随手写了一个 CRC 校验的脚本。 当然了，现实中的 CRC 校验是在数据链路层实现的，都是硬件完成的，我只是模拟一下 CRC 校验的过程。 CRC简介现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 比特差错。传输错误的比特占比特总数的比率叫做 误码率 BER (Bit Error">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://i.loli.net/2018/09/08/5b938180e1c25.png">
-<meta property="og:updated_time" content="2018-11-16T05:22:47.000Z">
+<meta property="og:updated_time" content="2018-12-15T06:22:49.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CRC校验">
-<meta name="twitter:description" content="因为前几天笔试题的时候，让我手算 CRC 校验。。然后今天随手写了一个 CRC 校验的脚本。 当然了，现实中的 CRC 校验是在数据链路层实现的，都是硬件完成的，我只是模拟一下 CRC 校验的过程。 CRC简介现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 比特差错。传输错误的比特占比特总数的比率叫做 误码率 BER（Bit Error R">
+<meta name="twitter:description" content="因为前几天笔试题的时候，让我手算 CRC 校验。。然后今天随手写了一个 CRC 校验的脚本。 当然了，现实中的 CRC 校验是在数据链路层实现的，都是硬件完成的，我只是模拟一下 CRC 校验的过程。 CRC简介现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 比特差错。传输错误的比特占比特总数的比率叫做 误码率 BER (Bit Error">
 <meta name="twitter:image" content="https://i.loli.net/2018/09/08/5b938180e1c25.png">
     
     
@@ -157,11 +157,11 @@
   <div class="content" itemprop="articleBody">
     <p>因为前几天笔试题的时候，让我手算 CRC 校验。。然后今天随手写了一个 CRC 校验的脚本。</p>
 <p>当然了，现实中的 CRC 校验是在数据链路层实现的，都是硬件完成的，我只是模拟一下 CRC 校验的过程。</p>
-<h2 id="CRC简介"><a href="#CRC简介" class="headerlink" title="CRC简介"></a>CRC简介</h2><p>现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 <strong>比特差错</strong>。传输错误的比特占比特总数的比率叫做 <strong>误码率 BER（Bit Error Rate）</strong>。</p>
-<p>为了保证数据传输的可靠性，必须采用各种差错检测措施，目前在数据链路层广泛采用了 CRC（Cyclic Redundancy Check）的检测技术。</p>
-<h2 id="CRC-过程"><a href="#CRC-过程" class="headerlink" title="CRC 过程"></a>CRC 过程</h2><p>数据链路层的数据单位是帧（frame）。</p>
+<h2 id="CRC简介"><a href="#CRC简介" class="headerlink" title="CRC简介"></a>CRC简介</h2><p>现实中通信线路都不会是理想的，比特在传输过程中会出现差错的，比如 0 变成 1，1 变成 0，这个就叫做 <strong>比特差错</strong>。传输错误的比特占比特总数的比率叫做 <strong>误码率 BER (Bit Error Rate) </strong>。</p>
+<p>为了保证数据传输的可靠性，必须采用各种差错检测措施，目前在数据链路层广泛采用了 CRC (Cyclic Redundancy Check) 的检测技术。</p>
+<h2 id="CRC-过程"><a href="#CRC-过程" class="headerlink" title="CRC 过程"></a>CRC 过程</h2><p>数据链路层的数据单位是帧 (frame) 。</p>
 <p>双方要事先约定一个除数 P，P 可以用多项式表示，P(X) 叫做 <strong>生成多项式</strong>。</p>
-<p>几种常见的生成多项式：</p>
+<p>几种常见的生成多项式: </p>
 <table>
 <thead>
 <tr>
@@ -189,18 +189,18 @@
 </tbody>
 </table>
 <hr>
-<p>CRC 的过程大概是这样的：</p>
+<p>CRC 的过程大概是这样的: </p>
 <ul>
 <li>P 的长度为 n，frame 就左移 (n - 1) 的长度，相当于在后面加上 (n - 1) 个零，此时 frameM = $frame * 2 ^ {n}$</li>
-<li>然后就是 frameM 作为被除数，P 作为除数，做二进制的模 2 运算（相当于做二进制加法，但是不进位，<strong>其实跟异或一样</strong>）。</li>
-<li>求出余数，就是 FCS（Frame Check Sequence），加在 frame 后面</li>
+<li>然后就是 frameM 作为被除数，P 作为除数，做二进制的模 2 运算 (相当于做二进制加法，但是不进位，<strong>其实跟异或一样</strong>) 。</li>
+<li>求出余数，就是 FCS (Frame Check Sequence) ，加在 frame 后面</li>
 <li>接收端收到 frame 后，同样跟 P 做模 2 运算，如果正确的话，<strong>余数一定是 0</strong>，表示没有差错，就接受，如果出错的话，无法判断哪个出错，就丢弃</li>
 </ul>
-<p>这个图中的原始的 frame 是 10110011，P 是 11001，P 的长度是 n 为 5，所以给原始的 frame 填上 4 个零（填上 n - 1 个零），然后求出余数为 FCS 为 0100，加在原始的 frame 后面，变成 101100110100 传给接收端，接收端收到 101100110100 后，跟 P 做模 2 运算，余数为 0 则表示差错，然后接受这个帧。</p>
+<p>这个图中的原始的 frame 是 10110011，P 是 11001，P 的长度是 n 为 5，所以给原始的 frame 填上 4 个零 (填上 n - 1 个零) ，然后求出余数为 FCS 为 0100，加在原始的 frame 后面，变成 101100110100 传给接收端，接收端收到 101100110100 后，跟 P 做模 2 运算，余数为 0 则表示差错，然后接受这个帧。</p>
 <p><img src="https://i.loli.net/2018/09/08/5b938180e1c25.png" alt="crc.png"></p>
 <p>最后可以实现的是，<strong>在接收端数据链路层接受的帧均无差错</strong>。</p>
 <h2 id="CRC-代码实现"><a href="#CRC-代码实现" class="headerlink" title="CRC 代码实现"></a>CRC 代码实现</h2><ul>
-<li>check() 函数就是模 2 运算，算出余数（FCS）</li>
+<li>check() 函数就是模 2 运算，算出余数 (FCS) </li>
 <li>crc() 就给 frame 填上零然后做模 2 运算，返回运算的余数。</li>
 <li>别的就是我随机生成一个二进制的 frame 和几个常见生成多项式做的测试代码</li>
 </ul>

@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="因为昨天突然做了一个快速幂，然后因为之前一直遇到比较少，所以也没在意。。这次正好看了一下。 二分幂，快速幂，矩阵快速幂在计算大指数次方的时候比较高效，因为相当于二分了，就从传统求次方的 O(n) 变成了 O(logn) 。 其实二分幂就是快速幂，二分幂是快速幂递归写法，而通常意义上说的快速幂指的是非递归写法，然后矩阵快速幂就是用矩阵乘法替换一下就好了。 二分幂（快速幂的递归写法）就是把求解 $a^">
+    <meta name="description" content="因为昨天突然做了一个快速幂，然后因为之前一直遇到比较少，所以也没在意。。这次正好看了一下。 二分幂，快速幂，矩阵快速幂在计算大指数次方的时候比较高效，因为相当于二分了，就从传统求次方的 O(n) 变成了 O(logn) 。 其实二分幂就是快速幂，二分幂是快速幂递归写法，而通常意义上说的快速幂指的是非递归写法，然后矩阵快速幂就是用矩阵乘法替换一下就好了。 二分幂 (快速幂的递归写法)就是把求解 $a">
 <meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速幂">
 <meta property="og:url" content="https://blog.pwxcoo.com/2018/08/02/快速幂/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="因为昨天突然做了一个快速幂，然后因为之前一直遇到比较少，所以也没在意。。这次正好看了一下。 二分幂，快速幂，矩阵快速幂在计算大指数次方的时候比较高效，因为相当于二分了，就从传统求次方的 O(n) 变成了 O(logn) 。 其实二分幂就是快速幂，二分幂是快速幂递归写法，而通常意义上说的快速幂指的是非递归写法，然后矩阵快速幂就是用矩阵乘法替换一下就好了。 二分幂（快速幂的递归写法）就是把求解 $a^">
+<meta property="og:description" content="因为昨天突然做了一个快速幂，然后因为之前一直遇到比较少，所以也没在意。。这次正好看了一下。 二分幂，快速幂，矩阵快速幂在计算大指数次方的时候比较高效，因为相当于二分了，就从传统求次方的 O(n) 变成了 O(logn) 。 其实二分幂就是快速幂，二分幂是快速幂递归写法，而通常意义上说的快速幂指的是非递归写法，然后矩阵快速幂就是用矩阵乘法替换一下就好了。 二分幂 (快速幂的递归写法)就是把求解 $a">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-16T05:22:47.000Z">
+<meta property="og:updated_time" content="2018-12-15T06:22:49.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速幂">
-<meta name="twitter:description" content="因为昨天突然做了一个快速幂，然后因为之前一直遇到比较少，所以也没在意。。这次正好看了一下。 二分幂，快速幂，矩阵快速幂在计算大指数次方的时候比较高效，因为相当于二分了，就从传统求次方的 O(n) 变成了 O(logn) 。 其实二分幂就是快速幂，二分幂是快速幂递归写法，而通常意义上说的快速幂指的是非递归写法，然后矩阵快速幂就是用矩阵乘法替换一下就好了。 二分幂（快速幂的递归写法）就是把求解 $a^">
+<meta name="twitter:description" content="因为昨天突然做了一个快速幂，然后因为之前一直遇到比较少，所以也没在意。。这次正好看了一下。 二分幂，快速幂，矩阵快速幂在计算大指数次方的时候比较高效，因为相当于二分了，就从传统求次方的 O(n) 变成了 O(logn) 。 其实二分幂就是快速幂，二分幂是快速幂递归写法，而通常意义上说的快速幂指的是非递归写法，然后矩阵快速幂就是用矩阵乘法替换一下就好了。 二分幂 (快速幂的递归写法)就是把求解 $a">
     
     
         
@@ -107,7 +107,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分幂（快速幂的递归写法）"><span class="toc-number">1.</span> <span class="toc-text">二分幂（快速幂的递归写法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速幂"><span class="toc-number">2.</span> <span class="toc-text">快速幂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速乘"><span class="toc-number">2.1.</span> <span class="toc-text">快速乘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵快速幂"><span class="toc-number">3.</span> <span class="toc-text">矩阵快速幂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分幂-快速幂的递归写法"><span class="toc-number">1.</span> <span class="toc-text">二分幂 (快速幂的递归写法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速幂"><span class="toc-number">2.</span> <span class="toc-text">快速幂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速乘"><span class="toc-number">2.1.</span> <span class="toc-text">快速乘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵快速幂"><span class="toc-number">3.</span> <span class="toc-text">矩阵快速幂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -156,7 +156,7 @@
     <p>因为昨天突然做了一个快速幂，然后因为之前一直遇到比较少，所以也没在意。。这次正好看了一下。</p>
 <p>二分幂，快速幂，矩阵快速幂在计算大指数次方的时候比较高效，因为相当于二分了，就从传统求次方的 O(n) 变成了 O(logn) 。</p>
 <p>其实二分幂就是快速幂，二分幂是快速幂递归写法，而通常意义上说的快速幂指的是非递归写法，然后矩阵快速幂就是用矩阵乘法替换一下就好了。</p>
-<h2 id="二分幂（快速幂的递归写法）"><a href="#二分幂（快速幂的递归写法）" class="headerlink" title="二分幂（快速幂的递归写法）"></a>二分幂（快速幂的递归写法）</h2><p>就是把求解 $a^{n}$ 的问题变成求解 $a^{\frac{n}{2}} \cdot a^{\frac{n}{2}}$ 或者 $a^{\frac{n}{2}} \cdot a^{\frac{n}{2}} \cdot a$ （根据 n 的奇偶确定转话成哪个）的问题。</p>
+<h2 id="二分幂-快速幂的递归写法"><a href="#二分幂-快速幂的递归写法" class="headerlink" title="二分幂 (快速幂的递归写法)"></a>二分幂 (快速幂的递归写法)</h2><p>就是把求解 $a^{n}$ 的问题变成求解 $a^{\frac{n}{2}} \cdot a^{\frac{n}{2}}$ 或者 $a^{\frac{n}{2}} \cdot a^{\frac{n}{2}} \cdot a$  (根据 n 的奇偶确定转话成哪个) 的问题。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> base,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="built_in">pow</span>(base,n/<span class="number">2</span>);</span><br><span class="line">    ans *= ans;</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">        ans *= base;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><p>就是把写法写成非递归的，可以用位运算，其实不用也没关系，可能是写起来比较好看吧。</p>
 <p>举个例子，相当于<br>$$<br>A=a^{6}=a^{110}=(a^{2^{2}} \cdot 1) \cdot (a^{2^{1}} \cdot 1) \cdot (a^{2^{0}} \cdot 0)<br>$$</p>
@@ -205,7 +205,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分幂（快速幂的递归写法）"><span class="toc-number">1.</span> <span class="toc-text">二分幂（快速幂的递归写法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速幂"><span class="toc-number">2.</span> <span class="toc-text">快速幂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速乘"><span class="toc-number">2.1.</span> <span class="toc-text">快速乘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵快速幂"><span class="toc-number">3.</span> <span class="toc-text">矩阵快速幂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分幂-快速幂的递归写法"><span class="toc-number">1.</span> <span class="toc-text">二分幂 (快速幂的递归写法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速幂"><span class="toc-number">2.</span> <span class="toc-text">快速幂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速乘"><span class="toc-number">2.1.</span> <span class="toc-text">快速乘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵快速幂"><span class="toc-number">3.</span> <span class="toc-text">矩阵快速幂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

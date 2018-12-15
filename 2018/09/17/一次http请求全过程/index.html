@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="QuestionQ: 一次 http 请求的过程？ 得到自己的IP地址（假设此时主机还未配置自己的 IP 地址。） 用 DHCP（Dynamic Host Configuration Protocol）得到自己的 IP 地址。  发送 DHCP 请求  应用层：生成一个 DHCP 请求报文 传输层：加上一个 UDP 头 源端口 68 目标端口 67   网络层：加上一个 IP 头 源IP: 0.0">
+    <meta name="description" content="QuestionQ: 一次 http 请求的过程？ 得到自己的IP地址 (假设此时主机还未配置自己的 IP 地址。)  用 DHCP (Dynamic Host Configuration Protocol) 得到自己的 IP 地址。  发送 DHCP 请求  应用层: 生成一个 DHCP 请求报文 传输层: 加上一个 UDP 头 源端口 68 目标端口 67   网络层: 加上一个 IP 头 源">
 <meta name="keywords" content="computer network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一次http请求全过程">
 <meta property="og:url" content="https://blog.pwxcoo.com/2018/09/17/一次http请求全过程/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="QuestionQ: 一次 http 请求的过程？ 得到自己的IP地址（假设此时主机还未配置自己的 IP 地址。） 用 DHCP（Dynamic Host Configuration Protocol）得到自己的 IP 地址。  发送 DHCP 请求  应用层：生成一个 DHCP 请求报文 传输层：加上一个 UDP 头 源端口 68 目标端口 67   网络层：加上一个 IP 头 源IP: 0.0">
+<meta property="og:description" content="QuestionQ: 一次 http 请求的过程？ 得到自己的IP地址 (假设此时主机还未配置自己的 IP 地址。)  用 DHCP (Dynamic Host Configuration Protocol) 得到自己的 IP 地址。  发送 DHCP 请求  应用层: 生成一个 DHCP 请求报文 传输层: 加上一个 UDP 头 源端口 68 目标端口 67   网络层: 加上一个 IP 头 源">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-16T05:22:47.000Z">
+<meta property="og:updated_time" content="2018-12-15T06:22:49.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一次http请求全过程">
-<meta name="twitter:description" content="QuestionQ: 一次 http 请求的过程？ 得到自己的IP地址（假设此时主机还未配置自己的 IP 地址。） 用 DHCP（Dynamic Host Configuration Protocol）得到自己的 IP 地址。  发送 DHCP 请求  应用层：生成一个 DHCP 请求报文 传输层：加上一个 UDP 头 源端口 68 目标端口 67   网络层：加上一个 IP 头 源IP: 0.0">
+<meta name="twitter:description" content="QuestionQ: 一次 http 请求的过程？ 得到自己的IP地址 (假设此时主机还未配置自己的 IP 地址。)  用 DHCP (Dynamic Host Configuration Protocol) 得到自己的 IP 地址。  发送 DHCP 请求  应用层: 生成一个 DHCP 请求报文 传输层: 加上一个 UDP 头 源端口 68 目标端口 67   网络层: 加上一个 IP 头 源">
     
     
         
@@ -154,30 +154,30 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Q: <strong>一次 http 请求的过程？</strong></p>
-<h2 id="得到自己的IP地址"><a href="#得到自己的IP地址" class="headerlink" title="得到自己的IP地址"></a>得到自己的IP地址</h2><p>（假设此时主机还未配置自己的 IP 地址。）</p>
-<p>用 DHCP（Dynamic Host Configuration Protocol）得到自己的 IP 地址。</p>
+<h2 id="得到自己的IP地址"><a href="#得到自己的IP地址" class="headerlink" title="得到自己的IP地址"></a>得到自己的IP地址</h2><p> (假设此时主机还未配置自己的 IP 地址。) </p>
+<p>用 DHCP (Dynamic Host Configuration Protocol) 得到自己的 IP 地址。</p>
 <ol>
 <li><p>发送 DHCP 请求</p>
 <ul>
-<li>应用层：生成一个 DHCP 请求报文</li>
-<li>传输层：加上一个 UDP 头<ul>
+<li>应用层: 生成一个 DHCP 请求报文</li>
+<li>传输层: 加上一个 UDP 头<ul>
 <li>源端口 68</li>
 <li>目标端口 67</li>
 </ul>
 </li>
-<li>网络层：加上一个 IP 头<ul>
+<li>网络层: 加上一个 IP 头<ul>
 <li>源IP: 0.0.0.0</li>
 <li>目标IP: 255.255.255.255</li>
 </ul>
 </li>
-<li>数据链路层：封装成帧<ul>
+<li>数据链路层: 封装成帧<ul>
 <li>源MAC: 自己的 MAC</li>
 <li>目标MAC: FF:FF:FF:FF:FF:FF</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>DHCP 服务器（连接在同一个交换机上）就到请求后，返回一个 DHCP ACK 报文：</p>
+<li><p>DHCP 服务器 (连接在同一个交换机上) 就到请求后，返回一个 DHCP ACK 报文: </p>
 </li>
 </ol>
 <ul>
@@ -189,7 +189,7 @@
 <ol start="3">
 <li>交换机收到之后，缓存一下，发给主机，主机就得到这些信息</li>
 </ol>
-<h2 id="查找默认网关的MAC地址"><a href="#查找默认网关的MAC地址" class="headerlink" title="查找默认网关的MAC地址"></a>查找默认网关的MAC地址</h2><p>（刚刚配置好 DHCP 需要去找到默认网关的 MAC 地址）</p>
+<h2 id="查找默认网关的MAC地址"><a href="#查找默认网关的MAC地址" class="headerlink" title="查找默认网关的MAC地址"></a>查找默认网关的MAC地址</h2><p> (刚刚配置好 DHCP 需要去找到默认网关的 MAC 地址) </p>
 <p>请求要发给默认网关的 MAC 地址，才能把请求发到局域网外部去，相当于发给默认网关路由器后，会根据 NAT 把局域网内部的 IP 地址变成局域网的 IP 地址然后发给局域网外部。</p>
 <ol start="4">
 <li>生成一个 ARP 查询报文，目标 IP 是默认网关路由器，封装成帧后是一个广播帧</li>
@@ -197,14 +197,14 @@
 </ol>
 <h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><ol start="6">
 <li>生成 DNS 查询报文<ul>
-<li>应用层：目的域名</li>
-<li>传输层：目的端口 53</li>
-<li>数据链路层：默认网关路由器 MAC 地址</li>
+<li>应用层: 目的域名</li>
+<li>传输层: 目的端口 53</li>
+<li>数据链路层: 默认网关路由器 MAC 地址</li>
 </ul>
 </li>
 <li>默认网关路由器收到后，根据路由表转发<ul>
-<li>内部网关协议（RIP，OSPF）</li>
-<li>外部网关协议（BGP）</li>
+<li>内部网关协议 (RIP，OSPF) </li>
+<li>外部网关协议 (BGP) </li>
 </ul>
 </li>
 <li>DNS 解析完了，封装成 UDP =&gt; 默认网关路由器 =&gt; 交换机 =&gt; 主机</li>

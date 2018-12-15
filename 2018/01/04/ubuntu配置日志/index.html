@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="安装用u盘重新一遍 ubuntu 。安装了 ubuntu16.04 版本的。 20181128: 安装了 ubuntu18.04 版本。 ##   sudo apt update sudo apt install firefox  chrome 添加软件源 sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-28T09:45:36.653Z">
+<meta property="og:updated_time" content="2018-12-15T06:21:20.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu配置日志">
 <meta name="twitter:description" content="安装用u盘重新一遍 ubuntu 。安装了 ubuntu16.04 版本的。 20181128: 安装了 ubuntu18.04 版本。 ##   sudo apt update sudo apt install firefox  chrome 添加软件源 sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc">
@@ -171,7 +171,7 @@
 <li><code>sudo apt install vim</code></li>
 <li><code>sudo vim /etc/vim/vimrc</code></li>
 <li>取消<code>syntax on</code>的注释</li>
-<li>最后一行配置：</li>
+<li>最后一行配置: </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set nu          //在左侧显示行号码</span><br><span class="line">set tabstop=4   //tab 长度设为4</span><br><span class="line">set nobackup    //覆盖文件不备份</span><br><span class="line">set cursorline  //突出显示当前行</span><br><span class="line">set ruler       //在右下角显示光标位置打状态行</span><br><span class="line">set autoindent  //自动缩进</span><br></pre></td></tr></table></figure>
 <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><ul>
@@ -264,8 +264,8 @@
 </li>
 <li><p><code>sudo sslocal -c /etc/shadowsocks.json</code> 开中断启动 ss</p>
 </li>
-<li>更改系统设置 -&gt; 网络 -&gt; 网络代理 -&gt; Socks主机： 127.0.0.1 -&gt; port: 1080</li>
-<li><p>给 chrome 下一个插件 SwitchyOmega(<a href="https://www.sundabao.com/ubuntu%E4%BD%BF%E7%94%A8shadowsocks/" target="_blank" rel="noopener">SwitchyOmega 配置</a>)，选择 <code>autoProxy</code>，规则列表网址：</p>
+<li>更改系统设置 -&gt; 网络 -&gt; 网络代理 -&gt; Socks主机:  127.0.0.1 -&gt; port: 1080</li>
+<li><p>给 chrome 下一个插件 SwitchyOmega(<a href="https://www.sundabao.com/ubuntu%E4%BD%BF%E7%94%A8shadowsocks/" target="_blank" rel="noopener">SwitchyOmega 配置</a>)，选择 <code>autoProxy</code>，规则列表网址: </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>别的浏览器 firefox 的代理都关了，不然不开 ss 上不了网，需要 FQ 的时候再用终端开个 ss 。</p>
