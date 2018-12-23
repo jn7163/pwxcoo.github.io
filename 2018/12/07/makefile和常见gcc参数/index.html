@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="makefilemakefile 的大概规则模板:  1234target ... : prerequisites ...	command	...	... 好，就是上面这种样子。讲完了。  makefile 的原理就是根据 target 文件和 prerequisites 文件修改时间的值来确定 target 文件是否需要重新编译。 而且 prerequisites 也有 prerequisite">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-15T06:21:20.369Z">
+<meta property="og:updated_time" content="2018-12-23T08:21:44.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="makefile和常见gcc参数">
 <meta name="twitter:description" content="makefilemakefile 的大概规则模板:  1234target ... : prerequisites ...	command	...	... 好，就是上面这种样子。讲完了。  makefile 的原理就是根据 target 文件和 prerequisites 文件修改时间的值来确定 target 文件是否需要重新编译。 而且 prerequisites 也有 prerequisite">
@@ -164,7 +164,10 @@
 <ul>
 <li><code>\</code> 用来换行</li>
 <li>makefile 中使用变量，用 <code>$(variable)</code> 就可以用了</li>
-<li><code>.PHONY</code> 指明某个 label 是伪目标文件，防止 makefile 中定义的目标和实际工作目录下的实际文件名出现冲突  <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
+<li><p><code>.PHONY</code> 指明某个 label 是伪目标文件，防止 makefile 中定义的目标和实际工作目录下的实际文件名出现冲突</p>
+  <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>$@</code> 表示目标文件，<code>$^</code> 表示全部依赖，<code>$&lt;</code> 表示第一个依赖。</p>
 </li>
 </ul>
 <p>一个最简单的 makefile 例子: </p>
