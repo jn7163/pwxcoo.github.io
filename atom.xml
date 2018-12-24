@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.pwxcoo.com/"/>
-  <updated>2018-12-15T06:22:49.587Z</updated>
+  <updated>2018-12-24T10:27:35.113Z</updated>
   <id>https://blog.pwxcoo.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C/C++中格式化输出的format</title>
+    <link href="https://blog.pwxcoo.com/2018/12/24/C-C-%E4%B8%AD%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA%E7%9A%84format/"/>
+    <id>https://blog.pwxcoo.com/2018/12/24/C-C-中格式化输出的format/</id>
+    <published>2018-12-24T10:26:04.000Z</published>
+    <updated>2018-12-24T10:27:35.113Z</updated>
+    
+    <content type="html"><![CDATA[<p>就是 C 中 <code>printf()</code> 的 format 标签。</p><p>format 标签属性是 <code>%[flag][width][.precision][length]specifier</code></p><h2 id="specifier"><a href="#specifier" class="headerlink" title="specifier"></a>specifier</h2><ul><li><code>c</code>, 字符</li><li><code>d/i</code>，有符号十进制整数</li><li><code>e</code>，使用 e 字符的科学计数法</li><li><code>E</code>，使用 E 字符的科学计数法</li><li><code>f</code>，十进制浮点数</li><li><code>g</code>，自动选择 %e 或 %f 中合适的表示法</li><li><code>G</code>，自动选择 %E 或 %f 中合适的表示法</li><li><code>o</code>，有符号八进制</li><li><code>s</code>，字符的字符串</li><li><code>u</code>，无符号十进制整数</li><li><code>x</code>，无符号十六进制整数</li><li><code>X</code>，无符号十六进制整数（大写字母）</li><li><code>p</code>，指针地址</li><li><code>n</code>，无输出</li><li><code>%</code>，字符</li></ul><h2 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h2><ul><li><code>-</code>，给定宽度内左对齐（默认右对齐）</li><li><code>+</code>，强制在结果之前显示 +/-</li><li><code>(space)</code>，如果没有写入任何字符，则在该值前面插入一个空格</li><li><code>#</code>，<ul><li>如果和 o/x/X 使用，非零值前面会分别显示 0/0x/0X</li><li>如果和 e/E/f 使用，会强制输出包含一个小数点，即使后面没有数字也会显示小数点（默认情况下，如果后面没有数字的时候，不会显示小数点）</li><li>如果和 g/G 使用，结果与 e/E 相同，但是尾部的零不会被移除</li></ul></li><li><code>0</code>，在制定填充 padding 的数字的左边放置 0，而不是空格。</li></ul><h2 id="width"><a href="#width" class="headerlink" title="width"></a>width</h2><ul><li><code>(number)</code>，要输出字符的最小数目。如果输出的值小于该数，则被空格填充，如果长于，也不会被截断</li><li><code>*</code>，宽度在 format 字符串中为指定，但是会作为附加的整数值参数放置于将要被格式化的参数之前</li></ul><h2 id="precision"><a href="#precision" class="headerlink" title=".precision"></a>.precision</h2><ul><li><code>.number</code>，指定了写入的数字的最小位数<ul><li>e/E/f，在小数点后输出的小数位数</li><li>g/G，要输出的最大有效位数</li><li>s，要输出的最大字符数</li><li>c，no impact</li><li>未指定任何精度时，默认为 1。如果指定时不带一个显式值，则假定为 0</li></ul></li><li><code>.*</code>，同 width 中 <code>*</code></li></ul><h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><ul><li>h，参数被解释为短整型</li><li>l，参数被解释成长整型</li><li>L，参数被解释成长双精度型</li></ul><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="http://www.runoob.com/cprogramming/c-function-vprintf.html" target="_blank" rel="noopener">C 库函数 - vprintf()</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="memo" scheme="https://blog.pwxcoo.com/categories/memo/"/>
+    
+    
+      <category term="c" scheme="https://blog.pwxcoo.com/tags/c/"/>
+    
+      <category term="c++" scheme="https://blog.pwxcoo.com/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>a collection of common operations in vim</title>
@@ -514,9 +544,9 @@
       <category term="tech" scheme="https://blog.pwxcoo.com/categories/tech/"/>
     
     
-      <category term="java" scheme="https://blog.pwxcoo.com/tags/java/"/>
-    
       <category term="data structure" scheme="https://blog.pwxcoo.com/tags/data-structure/"/>
+    
+      <category term="java" scheme="https://blog.pwxcoo.com/tags/java/"/>
     
   </entry>
   
@@ -544,11 +574,11 @@
       <category term="mome" scheme="https://blog.pwxcoo.com/categories/mome/"/>
     
     
-      <category term="visual studio code" scheme="https://blog.pwxcoo.com/tags/visual-studio-code/"/>
+      <category term="c" scheme="https://blog.pwxcoo.com/tags/c/"/>
     
       <category term="c++" scheme="https://blog.pwxcoo.com/tags/c/"/>
     
-      <category term="c" scheme="https://blog.pwxcoo.com/tags/c/"/>
+      <category term="visual studio code" scheme="https://blog.pwxcoo.com/tags/visual-studio-code/"/>
     
   </entry>
   
@@ -579,34 +609,6 @@
       <category term="mysql" scheme="https://blog.pwxcoo.com/tags/mysql/"/>
     
       <category term="database" scheme="https://blog.pwxcoo.com/tags/database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈哈希冲突</title>
-    <link href="https://blog.pwxcoo.com/2018/08/06/%E6%B5%85%E8%B0%88%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/"/>
-    <id>https://blog.pwxcoo.com/2018/08/06/浅谈哈希冲突/</id>
-    <published>2018-08-06T02:16:14.000Z</published>
-    <updated>2018-12-15T06:22:49.591Z</updated>
-    
-    <content type="html"><![CDATA[<p>理想的哈希函数是不会有冲突的，但是实际的哈希函数，不可能完全避免冲突。</p><p>一般有 4 中解决办法: </p><ul><li>开放定址法<ul><li>线性探测</li><li>二次探测</li><li>伪随机探测</li></ul></li><li>再哈希</li><li>链地址</li><li>建立公共溢出区</li></ul><h2 id="开放定址法"><a href="#开放定址法" class="headerlink" title="开放定址法"></a>开放定址法</h2><p>$$H_{i} = (H(key) + d_{i}) \% m, \space \space \space \space \space i=1,2,…,n$$</p><p>其中 H (key) 为哈希函数，m 为表长，di称为增量序列。</p><h3 id="线性探测"><a href="#线性探测" class="headerlink" title="线性探测"></a>线性探测</h3><p>$d_{i} = 1, 2, …, m - 1$</p><h3 id="二次探测"><a href="#二次探测" class="headerlink" title="二次探测"></a>二次探测</h3><p>$d_{i} = 1^{2}, -1^{2}, 2^{2}, -2^{2},…, k^{2}, -k^{2}  (k^{2} &lt; m)$</p><h3 id="伪随机探测"><a href="#伪随机探测" class="headerlink" title="伪随机探测"></a>伪随机探测</h3><p>$d_{i}=$ 伪随机数序列</p><h2 id="再哈希法"><a href="#再哈希法" class="headerlink" title="再哈希法"></a>再哈希法</h2><p>$$H_{i} = H_{i}(key), \space \space \space \space \space  i=1，2，…，k$$</p><p>当 $H_{1}(key)$ 发生冲突时，在计算 $H_{2}(key)$，… 直到冲突不再产生。</p><h2 id="链地址法"><a href="#链地址法" class="headerlink" title="链地址法"></a>链地址法</h2><p>将所有哈希地址相同的元素，构成一个同义词链的链表。</p><h2 id="建立公共溢出区"><a href="#建立公共溢出区" class="headerlink" title="建立公共溢出区"></a>建立公共溢出区</h2><p>将哈希表分为基本表和溢出表两部分，凡是和基本表发生冲突的元素，一律填入溢出表。</p><h2 id="开放探测-vs-链地址法"><a href="#开放探测-vs-链地址法" class="headerlink" title="开放探测 vs 链地址法"></a>开放探测 vs 链地址法</h2><p>开放探测的缺点: </p><ul><li>需要一个处理溢出的程序</li><li>删除工作，为什么保证同义词链的话，不能直接把删除节点置为空 (因为会影响到该节点后面的节点) ，只能标上一个删除记号</li><li>容易产生堆积</li></ul><p>链地址的优点: </p><ul><li>无堆积</li><li>节点空间动态申请，适合无法确定表长的情况</li><li>删除简单</li></ul><p>链地址的缺点: </p><ul><li>指针需要额外的空间 </li></ul><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://www.cnblogs.com/wuchaodzxx/p/7396599.html" target="_blank" rel="noopener">解决hash冲突的三个方法</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          
-        
-      
-    
-    </summary>
-    
-      <category term="data structure" scheme="https://blog.pwxcoo.com/categories/data-structure/"/>
-    
-    
-      <category term="data structure" scheme="https://blog.pwxcoo.com/tags/data-structure/"/>
     
   </entry>
   
