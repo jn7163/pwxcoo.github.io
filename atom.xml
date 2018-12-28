@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.pwxcoo.com/"/>
-  <updated>2018-12-28T08:40:17.000Z</updated>
+  <updated>2018-12-28T09:52:33.649Z</updated>
   <id>https://blog.pwxcoo.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://blog.pwxcoo.com/2018/12/28/linux-notes/"/>
     <id>https://blog.pwxcoo.com/2018/12/28/linux-notes/</id>
     <published>2018-12-28T08:30:58.000Z</published>
-    <updated>2018-12-28T08:40:17.000Z</updated>
+    <updated>2018-12-28T09:52:33.649Z</updated>
     
-    <content type="html"><![CDATA[<p>记录常用的 linux 操作。</p><h2 id="server-配置-ssh-service"><a href="#server-配置-ssh-service" class="headerlink" title="server 配置 ssh service"></a>server 配置 ssh service</h2><ul><li><code>useradd -m [username]</code>, <code>-m</code> 表示自动建立用户的登陆目录</li><li><code>passwd [username]</code>, 配置密码</li><li><code>usermod -s /bin/bash [username]</code>, 更改默认的 login shell<ul><li><code>cat /etc/passwd</code> 查看所有用户</li><li><code>cat /etc/shells</code> 查看所有 shell</li></ul></li><li>回到 client，<code>scp id_rsa.pub [username]@[server address]:/home/[username]</code> 传输公钥到 server</li><li>登陆回 server，<code>mv id_rsa.pub .ssh/authorized_keys</code> 就好了</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>a collection of frequently-used linux operations.</p><h2 id="server-configure-ssh-service"><a href="#server-configure-ssh-service" class="headerlink" title="server configure ssh service"></a>server configure ssh service</h2><ul><li><code>useradd -m [username]</code>, <code>-m</code> will automatically create new user folder in <code>/home</code></li><li><code>passwd [username]</code>, configure password</li><li><code>usermod -s /bin/bash [username]</code>, change default login shell<ul><li><code>cat /etc/passwd</code> list all users</li><li><code>cat /etc/shells</code> list all available shells</li></ul></li><li><code>usermod -aG sudo pwxcoo</code>，grant <code>sudo</code> privileges<ul><li><code>groups</code> check group of current user</li></ul></li><li>in client，<code>scp id_rsa.pub [username]@[server address]:/home/[username]</code> transfer public key to server</li><li>back to server，<code>mv id_rsa.pub .ssh/authorized_keys</code>  will be ok</li></ul><h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><ul><li><code>sudo apt update</code></li><li><code>sudo apt install nginx</code></li><li><code>cd /etc/nginx/conf.d</code> (NGINX site-specific configuration files are kept in <code>/etc/nginx/conf.d</code>)</li><li><p>simple template. <code>example.com.conf</code></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  example.com;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line">    #access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line">    #</span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>test nginx configration is ok</p><ul><li><code>sudo nginx -t</code></li><li><code>sudo nginx -s reload</code></li></ul></li></ul>]]></content>
     
     <summary type="html">
     
@@ -398,9 +398,9 @@
     
       <category term="algorithm" scheme="https://blog.pwxcoo.com/tags/algorithm/"/>
     
-      <category term="operate system" scheme="https://blog.pwxcoo.com/tags/operate-system/"/>
-    
       <category term="cache" scheme="https://blog.pwxcoo.com/tags/cache/"/>
+    
+      <category term="operate system" scheme="https://blog.pwxcoo.com/tags/operate-system/"/>
     
   </entry>
   
@@ -486,9 +486,9 @@
       <category term="base" scheme="https://blog.pwxcoo.com/categories/base/"/>
     
     
-      <category term="cache" scheme="https://blog.pwxcoo.com/tags/cache/"/>
-    
       <category term="redis" scheme="https://blog.pwxcoo.com/tags/redis/"/>
+    
+      <category term="cache" scheme="https://blog.pwxcoo.com/tags/cache/"/>
     
   </entry>
   
