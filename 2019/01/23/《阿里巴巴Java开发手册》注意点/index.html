@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="大概把这本书里之前没注意到的整理了一下。 prerequisites POJO: plain ordinary java object PO: persistent object BO: business object VO: value/view object DTO: data Transfer object  DAO: data access object    编程规约（一）命名风格 抽象">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-07T09:40:26.571Z">
+<meta property="og:updated_time" content="2019-02-07T13:49:14.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《阿里巴巴Java开发手册》注意点">
 <meta name="twitter:description" content="大概把这本书里之前没注意到的整理了一下。 prerequisites POJO: plain ordinary java object PO: persistent object BO: business object VO: value/view object DTO: data Transfer object  DAO: data access object    编程规约（一）命名风格 抽象">
@@ -195,10 +195,51 @@
 <li>泛型通配符&lt;? extends T &gt;来接收返回的数据，此写法的泛型集合不能使用 add 方法，而 &lt;? super T&gt; 不能使用 get 方法，作为接口调用赋值时易出错。扩展说一下 PECS(Producer Extends Consumer Super) 原则:第一、频繁往外读取内容的，适合用&lt;? extends T &gt;。第二、经常往里插入的，适合用 &lt;? super T&gt; 。</li>
 <li>集合初始化时,指定集合初始值大小。</li>
 <li>使用 entrySet 遍历 Map 类集合 KV ,而不是 keySet 方式进行遍历。</li>
-<li><p>Map 类对 null 值的处理。</p>
-<p>  | 集合类            | Key | Value | Super       | 说明                |<br>  |——————-|—–|——-|————-|———————|<br>  | Hashtable         | no  | no    | Dictionary  | thread safe         |<br>  | ConcurrentHashMap | no  | no    | AbstractMap | 锁分段（JDK8: CAS） |<br>  | TreeMap           | no  | yes   | AbstractMap | thread unsafe       |<br>  | HashMap           | yes | yes   | AbstractMap | thread unsafe       |</p>
-</li>
+<li>Map 类对 null 值的处理。</li>
 </ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>集合类</th>
+<th>Key</th>
+<th>Value</th>
+<th>Super</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hashtable</td>
+<td>no</td>
+<td>no</td>
+<td>Dictionary</td>
+<td>thread safe</td>
+</tr>
+<tr>
+<td>ConcurrentHashMap</td>
+<td>no</td>
+<td>no</td>
+<td>AbstractMap</td>
+<td>锁分段（JDK8: CAS）</td>
+</tr>
+<tr>
+<td>TreeMap</td>
+<td>no</td>
+<td>yes</td>
+<td>AbstractMap</td>
+<td>thread unsafe</td>
+</tr>
+<tr>
+<td>HashMap</td>
+<td>yes</td>
+<td>yes</td>
+<td>AbstractMap</td>
+<td>thread unsafe</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
 <h3 id="（六）-并发处理"><a href="#（六）-并发处理" class="headerlink" title="（六） 并发处理"></a>（六） 并发处理</h3><ul>
 <li>【强制】创建线程或线程池时请指定有意义的线程名称,方便出错时回溯。</li>
 <li>【强制】线程池不允许使用 Executors 去创建,而是通过 ThreadPoolExecutor 的方式,这样的处理方式让写的同学更加明确线程池的运行规则,规避资源耗尽的风险。<ol>
