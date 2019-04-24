@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Java线程状态 Java 中的线程概念是操作系统线程概念的一个 wrapper。  操作系统中线程状态 New Ready Blocked Running Terminated   Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装)  New  Runnable (Thread.start()) Blocked (synchronized, Lock) Time Waitin">
+    <meta name="description" content="Java线程状态 Java 中的线程概念是操作系统线程概念的一个 wrapper。  操作系统中线程状态 New Ready Blocked Running Terminated   Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装) New Runnable (Thread.start()) Blocked (synchronized, Lock) Time Waiting">
 <meta name="keywords" content="java,concurrent">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈Java并发">
 <meta property="og:url" content="https://blog.pwxcoo.com/2018/09/07/浅谈Java并发/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="Java线程状态 Java 中的线程概念是操作系统线程概念的一个 wrapper。  操作系统中线程状态 New Ready Blocked Running Terminated   Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装)  New  Runnable (Thread.start()) Blocked (synchronized, Lock) Time Waitin">
+<meta property="og:description" content="Java线程状态 Java 中的线程概念是操作系统线程概念的一个 wrapper。  操作系统中线程状态 New Ready Blocked Running Terminated   Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装) New Runnable (Thread.start()) Blocked (synchronized, Lock) Time Waiting">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://i.loli.net/2018/09/07/5b920cd0dd44e.png">
-<meta property="og:updated_time" content="2019-02-07T09:40:26.575Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1ooox6kz5j20ot0do0ta.jpg">
+<meta property="og:updated_time" content="2019-04-02T15:00:56.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈Java并发">
-<meta name="twitter:description" content="Java线程状态 Java 中的线程概念是操作系统线程概念的一个 wrapper。  操作系统中线程状态 New Ready Blocked Running Terminated   Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装)  New  Runnable (Thread.start()) Blocked (synchronized, Lock) Time Waitin">
-<meta name="twitter:image" content="https://i.loli.net/2018/09/07/5b920cd0dd44e.png">
+<meta name="twitter:description" content="Java线程状态 Java 中的线程概念是操作系统线程概念的一个 wrapper。  操作系统中线程状态 New Ready Blocked Running Terminated   Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装) New Runnable (Thread.start()) Blocked (synchronized, Lock) Time Waiting">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1ooox6kz5j20ot0do0ta.jpg">
     
     
         
@@ -155,7 +155,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Java线程状态"><a href="#Java线程状态" class="headerlink" title="Java线程状态"></a>Java线程状态</h2><p><img src="https://i.loli.net/2018/09/07/5b920cd0dd44e.png" alt="concurrent"></p>
+    <h2 id="Java线程状态"><a href="#Java线程状态" class="headerlink" title="Java线程状态"></a>Java线程状态</h2><p><img src="https://ws1.sinaimg.cn/large/8a79c363gy1g1ooox6kz5j20ot0do0ta.jpg" alt="concurrent"></p>
 <p><strong>Java 中的线程概念是操作系统线程概念的一个 wrapper。</strong></p>
 <ul>
 <li>操作系统中线程状态<ul>
@@ -166,8 +166,8 @@
 <li>Terminated</li>
 </ul>
 </li>
-<li>Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装) <ul>
-<li>New </li>
+<li>Java中的线程状态 (Java 中的线程是对操作系统线程的再次封装)<ul>
+<li>New</li>
 <li>Runnable (Thread.start())</li>
 <li>Blocked (synchronized, Lock)</li>
 <li>Time Waiting (Thread.sleep())</li>
@@ -197,7 +197,7 @@
 <hr>
 <p>Callable 可以用 Future 来获得返回值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">cancel</span><span class="params">(<span class="keyword">boolean</span> mayInterruptIfRunning)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isCancelled</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDone</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">V <span class="title">get</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException, ExecutionException, TimeoutException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Future 是一个接口，Future 提供了三种功能: </p>
+<p>Future 是一个接口，Future 提供了三种功能:</p>
 <ul>
 <li>判断任务是否完成；</li>
 <li>能够中断任务；</li>
@@ -211,21 +211,21 @@
 <h3 id="操作系统中的同步问题"><a href="#操作系统中的同步问题" class="headerlink" title="操作系统中的同步问题"></a>操作系统中的同步问题</h3><ul>
 <li>进程同步<ul>
 <li>信号量</li>
-<li>管程 (monitor) </li>
+<li>管程 (monitor)</li>
 <li>消息传递</li>
 </ul>
 </li>
 <li>线程同步<ul>
-<li>临界区 (Critical Section) </li>
-<li>互斥量 (Mutex) </li>
-<li>信号量 (Semaphore) </li>
-<li>事件 (Event) </li>
+<li>临界区 (Critical Section)</li>
+<li>互斥量 (Mutex)</li>
+<li>信号量 (Semaphore)</li>
+<li>事件 (Event)</li>
 </ul>
 </li>
 </ul>
 <h3 id="Java中线程同步问题"><a href="#Java中线程同步问题" class="headerlink" title="Java中线程同步问题"></a>Java中线程同步问题</h3><ul>
 <li>synchronized<ul>
-<li>Java中每个对象都有一个内置锁 (修饰静态方法的时候，会锁住整个类) </li>
+<li>Java中每个对象都有一个内置锁 (修饰静态方法的时候，会锁住整个类)</li>
 </ul>
 </li>
 <li>重入锁 (java.util.concurrent) ，ReentrantLock<ul>

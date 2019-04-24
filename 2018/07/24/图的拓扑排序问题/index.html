@@ -14,13 +14,13 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="很久没写算法题了。。 遇到一个”求图中存在环的问题“的时候，磕磕绊绊了好久。。 邻接表和邻接矩阵就是两个两种用来存储图数据结构的方法。  邻接表。一个数组，每个 index 是一个链表，每个链表就是连接着的 node 邻接矩阵。用一个矩阵来存储 edge，在图比较稀疏的时候比较浪费空间  求图的时候存在环因为在这个问题里，有向图和无向图没什么卵区别，所以也不做区分了。 DFS直接上 dfs，遇到遍">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://i.loli.net/2018/07/25/5b574e888c55b.png">
-<meta property="og:image" content="https://i.loli.net/2018/07/25/5b5751ac34dbe.png">
-<meta property="og:updated_time" content="2019-02-07T09:40:26.571Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1oonhs5m8j204005j745.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1oonr558jj207g05omx3.jpg">
+<meta property="og:updated_time" content="2019-04-02T14:59:49.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图的拓扑排序问题">
 <meta name="twitter:description" content="很久没写算法题了。。 遇到一个”求图中存在环的问题“的时候，磕磕绊绊了好久。。 邻接表和邻接矩阵就是两个两种用来存储图数据结构的方法。  邻接表。一个数组，每个 index 是一个链表，每个链表就是连接着的 node 邻接矩阵。用一个矩阵来存储 edge，在图比较稀疏的时候比较浪费空间  求图的时候存在环因为在这个问题里，有向图和无向图没什么卵区别，所以也不做区分了。 DFS直接上 dfs，遇到遍">
-<meta name="twitter:image" content="https://i.loli.net/2018/07/25/5b574e888c55b.png">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1oonhs5m8j204005j745.jpg">
     
     
         
@@ -166,12 +166,12 @@
 <h2 id="求图的时候存在环"><a href="#求图的时候存在环" class="headerlink" title="求图的时候存在环"></a>求图的时候存在环</h2><p>因为在这个问题里，有向图和无向图没什么卵区别，所以也不做区分了。</p>
 <h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>直接上 dfs，遇到遍历过的，直接判定存在环。</p>
 <p>因为担心<strong>环的重复计算</strong>。</p>
-<p><img src="https://i.loli.net/2018/07/25/5b574e888c55b.png" alt="graph-cycle-dfs"></p>
+<p><img src="https://ws1.sinaimg.cn/large/8a79c363gy1g1oonhs5m8j204005j745.jpg" alt="graph-cycle-dfs"></p>
 <p>就像这样，如果 1-&gt;2-&gt;3 遍历了，发现 3-&gt;1，于是判定了一波环，继续 1-&gt;3，又发现了一波环，重复计算了一波 (但是我感觉对判断是否存在环这个问题里没有问题的，拓展开来可能存在一些问题) 。</p>
 <p>所以不仅设置一个 <code>visited[]</code>，还要设置一个 <code>onpath[]</code> 来标记，已经遍历完这个 node，还是正在遍历中。一个很形象的比喻就是，初始化白色结点，遍历中灰色，遍历完了黑色。</p>
 <h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>把入度为 0 的点 (无向图就是入度为 1) 加入队列，然后取出，把该点删去，同时删去以该点为起始点的边，如此写一个 BFS。</p>
 <p>缺点是不能输出环。因为并不是剩余的所有点都是环的顶点。</p>
-<p><img src="https://i.loli.net/2018/07/25/5b5751ac34dbe.png" alt="graph-cycle-bfs"></p>
+<p><img src="https://ws1.sinaimg.cn/large/8a79c363gy1g1oonr558jj207g05omx3.jpg" alt="graph-cycle-bfs"></p>
 <p>图中 4 就不是环的顶点。</p>
 <hr>
 <p>输入环，想拓扑排序一波，就用 DFS。加一个 <code>pre[]</code> 就可以了。</p>
