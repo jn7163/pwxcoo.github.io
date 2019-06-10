@@ -8,18 +8,18 @@
     <!-- fix Sina weibo image host temporarily -->
     <meta name="referrer" content="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="a collection of frequently-used linux operations. server configure ssh service useradd -m [username], -m will automatically create new user folder in /home passwd [username], configure password usermo">
+    <meta name="description" content="a collection of frequently-used linux operations. ssh service useradd -m [username], -m will automatically create new user folder in /home passwd [username], configure password usermod -s /bin/bash [u">
 <meta name="keywords" content="memo,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux notes">
 <meta property="og:url" content="https://blog.pwxcoo.com/2018/12/28/linux-notes/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="a collection of frequently-used linux operations. server configure ssh service useradd -m [username], -m will automatically create new user folder in /home passwd [username], configure password usermo">
+<meta property="og:description" content="a collection of frequently-used linux operations. ssh service useradd -m [username], -m will automatically create new user folder in /home passwd [username], configure password usermod -s /bin/bash [u">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-07T09:40:26.571Z">
+<meta property="og:updated_time" content="2019-06-10T03:30:51.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux notes">
-<meta name="twitter:description" content="a collection of frequently-used linux operations. server configure ssh service useradd -m [username], -m will automatically create new user folder in /home passwd [username], configure password usermo">
+<meta name="twitter:description" content="a collection of frequently-used linux operations. ssh service useradd -m [username], -m will automatically create new user folder in /home passwd [username], configure password usermod -s /bin/bash [u">
     
     
         
@@ -82,7 +82,7 @@
         <li><a class="icon" href="/2019/01/23/《阿里巴巴Java开发手册》注意点/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2018/12/24/C-C-中格式化输出的format/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2018/12/14/vim notes/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -109,7 +109,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#server-configure-ssh-service"><span class="toc-number">1.</span> <span class="toc-text">server configure ssh service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">2.</span> <span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-environment-variables"><span class="toc-number">3.</span> <span class="toc-text">set environment variables</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh-service"><span class="toc-number">1.</span> <span class="toc-text">ssh service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">2.</span> <span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#environment-variables"><span class="toc-number">3.</span> <span class="toc-text">environment variables</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -156,7 +156,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>a collection of frequently-used linux operations.</p>
-<h2 id="server-configure-ssh-service"><a href="#server-configure-ssh-service" class="headerlink" title="server configure ssh service"></a>server configure ssh service</h2><ul>
+<h2 id="ssh-service"><a href="#ssh-service" class="headerlink" title="ssh service"></a>ssh service</h2><ul>
 <li><code>useradd -m [username]</code>, <code>-m</code> will automatically create new user folder in <code>/home</code></li>
 <li><code>passwd [username]</code>, configure password</li>
 <li><code>usermod -s /bin/bash [username]</code>, change default login shell<ul>
@@ -185,7 +185,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="set-environment-variables"><a href="#set-environment-variables" class="headerlink" title="set environment variables"></a>set environment variables</h2><p>linux will execute <code>/etc/profile</code> while booting up, this script will execute all script in <code>/etc/profile.d</code>, so add some scripts in <code>/etc/profile.d</code> will be easily maintained and convenient.</p>
+<h2 id="environment-variables"><a href="#environment-variables" class="headerlink" title="environment variables"></a>environment variables</h2><p>linux will execute <code>/etc/profile</code> while booting up, this script will execute all script in <code>/etc/profile.d</code>, so add some scripts in <code>/etc/profile.d</code> will be easily maintained and convenient.</p>
 <p>like <code>jdk.sh</code>, it will set environment variables for Java.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> J2SDKDIR=/usr/lib/jvm/java-8-oracle</span><br><span class="line"><span class="built_in">export</span> J2REDIR=/usr/lib/jvm/java-8-oracle/jre</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-8-oracle</span><br><span class="line"><span class="built_in">export</span> DERBY_HOME=/usr/lib/jvm/java-8-oracle/db</span><br></pre></td></tr></table></figure>
   </div>
@@ -222,7 +222,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#server-configure-ssh-service"><span class="toc-number">1.</span> <span class="toc-text">server configure ssh service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">2.</span> <span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-environment-variables"><span class="toc-number">3.</span> <span class="toc-text">set environment variables</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh-service"><span class="toc-number">1.</span> <span class="toc-text">ssh service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">2.</span> <span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#environment-variables"><span class="toc-number">3.</span> <span class="toc-text">environment variables</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
