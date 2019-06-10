@@ -8,18 +8,18 @@
     <!-- fix Sina weibo image host temporarily -->
     <meta name="referrer" content="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争">
-<meta name="keywords" content="advanced-java,cache">
+    <meta name="description" content="fff">
+<meta name="keywords" content="unp,io">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Advanced Java】缓存">
-<meta property="og:url" content="https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/index.html">
+<meta property="og:title" content="IO Multiplexing: The select and poll Function">
+<meta property="og:url" content="https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争">
+<meta property="og:description" content="fff">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-03T11:34:36.831Z">
+<meta property="og:updated_time" content="2019-06-10T09:17:56.482Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Advanced Java】缓存">
-<meta name="twitter:description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争">
+<meta name="twitter:title" content="IO Multiplexing: The select and poll Function">
+<meta name="twitter:description" content="fff">
     
     
         
@@ -39,7 +39,7 @@
         
     
     <!-- title -->
-    <title>【Advanced Java】缓存</title>
+    <title>IO Multiplexing: The select and poll Function</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -75,10 +75,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2019/05/30/【Advanced-Java】搜索引擎/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/06/03/【Advanced-Java】缓存/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -91,21 +89,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&text=【Advanced Java】缓存"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&is_video=false&description=【Advanced Java】缓存"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【Advanced Java】缓存&body=Check out this article: https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&name=【Advanced Java】缓存&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&text=IO Multiplexing: The select and poll Function"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&is_video=false&description=IO Multiplexing: The select and poll Function"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=IO Multiplexing: The select and poll Function&body=Check out this article: https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&name=IO Multiplexing: The select and poll Function&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存优缺点"><span class="toc-number">1.</span> <span class="toc-text">缓存优缺点</span></a></li></ol>
+      
     </div>
   </span>
 </div>
@@ -117,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        【Advanced Java】缓存
+        IO Multiplexing: The select and poll Function
     </h1>
 
 
@@ -128,7 +126,7 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-06-03T11:31:46.000Z" itemprop="datePublished">2019-06-03</time>
+        <time datetime="2019-06-10T09:16:12.000Z" itemprop="datePublished">2019-06-10</time>
     </div>
 
 
@@ -142,7 +140,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/advanced-java/">advanced-java</a>, <a class="tag-link" href="/tags/cache/">cache</a>
+        <a class="tag-link" href="/tags/io/">io</a>, <a class="tag-link" href="/tags/unp/">unp</a>
     </div>
 
 
@@ -151,17 +149,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="缓存优缺点"><a href="#缓存优缺点" class="headerlink" title="缓存优缺点"></a>缓存优缺点</h2><p>优点：</p>
-<ol>
-<li>高性能</li>
-<li>高并发</li>
-</ol>
-<p>缺点，因为缓存可能出现的问题：</p>
-<ol>
-<li>缓存和数据库双写不一致</li>
-<li>缓存雪崩，缓存穿透</li>
-<li>缓存并发竞争</li>
-</ol>
+    <p>fff</p>
 
   </div>
 </article>
@@ -193,21 +181,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存优缺点"><span class="toc-number">1.</span> <span class="toc-text">缓存优缺点</span></a></li></ol>
+      
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&text=【Advanced Java】缓存"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&is_video=false&description=【Advanced Java】缓存"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【Advanced Java】缓存&body=Check out this article: https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&title=【Advanced Java】缓存"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/&name=【Advanced Java】缓存&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&text=IO Multiplexing: The select and poll Function"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&is_video=false&description=IO Multiplexing: The select and poll Function"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=IO Multiplexing: The select and poll Function&body=Check out this article: https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&title=IO Multiplexing: The select and poll Function"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/&name=IO Multiplexing: The select and poll Function&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
