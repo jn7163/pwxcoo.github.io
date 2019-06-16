@@ -8,18 +8,25 @@
     <!-- fix Sina weibo image host temporarily -->
     <meta name="referrer" content="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="fff">
+    <meta name="description" content="IntroductionWhen the TCP client is handling two inputs at the same time: standard input and a TCP socket, we encounter a problem when the client was blocked in a call to fgets (on standard input) and">
 <meta name="keywords" content="unp,io">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IO Multiplexing: The select and poll Function">
 <meta property="og:url" content="https://blog.pwxcoo.com/2019/06/10/IO-Multiplexing-The-select-and-poll-Function/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="fff">
+<meta property="og:description" content="IntroductionWhen the TCP client is handling two inputs at the same time: standard input and a TCP socket, we encounter a problem when the client was blocked in a call to fgets (on standard input) and">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-10T09:17:56.482Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363ly1g439nq3yodg20dw07qt8t.gif">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/8a79c363ly1g43bp0b7gng20dw07q74m.gif">
+<meta property="og:image" content="https://wx2.sinaimg.cn/large/8a79c363ly1g43c3o4uizg20dw07kmxf.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/8a79c363ly1g43cg44s7lg20dw07mmxd.gif">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/8a79c363ly1g43d32olhtg20dw07s0su.gif">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363ly1g43dpda7cvg20dw07mt95.gif">
+<meta property="og:updated_time" content="2019-06-16T14:49:13.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO Multiplexing: The select and poll Function">
-<meta name="twitter:description" content="fff">
+<meta name="twitter:description" content="IntroductionWhen the TCP client is handling two inputs at the same time: standard input and a TCP socket, we encounter a problem when the client was blocked in a call to fgets (on standard input) and">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/8a79c363ly1g439nq3yodg20dw07qt8t.gif">
     
     
         
@@ -103,7 +110,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO-Models"><span class="toc-number">2.</span> <span class="toc-text">IO Models</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blocking-IO-Model"><span class="toc-number">2.1.</span> <span class="toc-text">Blocking IO Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nonblocking-IO-Model"><span class="toc-number">2.2.</span> <span class="toc-text">Nonblocking IO Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO-Multiplexing-Model"><span class="toc-number">2.3.</span> <span class="toc-text">IO Multiplexing Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Signal-Driven-IO-Model"><span class="toc-number">2.4.</span> <span class="toc-text">Signal-Driven IO Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Asynchronous-IO-model"><span class="toc-number">2.5.</span> <span class="toc-text">Asynchronous IO model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparison-of-the-IO-models"><span class="toc-number">3.</span> <span class="toc-text">Comparison of the IO models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Synchronous-IO-versus-Asynchronous-IO"><span class="toc-number">4.</span> <span class="toc-text">Synchronous IO versus Asynchronous IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -149,7 +156,81 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>fff</p>
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>When the TCP client is handling two inputs at the same time: standard input and a TCP socket, we encounter a problem when the client was blocked in a call to <code>fgets</code> (on standard input) and the server process was killed. The server TCP correctly sent a FIN to the client TCP, but since the client process was blocked reading from standard input, it never saw the EOF until it read from the socket (possibly much later).</p>
+<p>We want to be notified if one or more IO condition are ready (i.e., input is ready to be read, or the descriptor is capable of taking more output). The capability is called <strong>IO multiplexing</strong> and is provided by the <code>select</code> and <code>poll</code> functions, as well as a newer POSIX variation of the former, called <code>pselect</code>.</p>
+<p>IO multiplexing is typically used in networking application in many scenarios. And IO multiplexing is not limited to networking programming, many nontrivial applications find a need for these techniques.</p>
+<h2 id="IO-Models"><a href="#IO-Models" class="headerlink" title="IO Models"></a>IO Models</h2><p>We firstly examine the basic differences in the five IO models that are available to us under Unix:</p>
+<ul>
+<li>blocking IO</li>
+<li>nonblocking IO</li>
+<li>IO multiplexing (select and poll)</li>
+<li>signal driven IO</li>
+<li>asynchronous IO (the POSIX aio_ functions)</li>
+</ul>
+<p>There are normally two distinct phases for an input operations:</p>
+<ol>
+<li>Waiting for data to be ready. This involves waiting for data to arrive on the network. When the packet arrives, it is copied into a buffer within the kernel.</li>
+<li>Copying the data from the kernel to the process. This means copying the (ready) data from the kernel’s buffer into our application buffer.</li>
+</ol>
+<h3 id="Blocking-IO-Model"><a href="#Blocking-IO-Model" class="headerlink" title="Blocking IO Model"></a>Blocking IO Model</h3><p>The most prevalent model for IO is the blocking IO model. By default, all socket are blocking. The scenario is shown in the figure below:</p>
+<p><img src="https://ws1.sinaimg.cn/large/8a79c363ly1g439nq3yodg20dw07qt8t.gif" alt="blocking IO.gif"></p>
+<p>We use UDP for this example instead of TCP because with UDP, the concept of data being “ready” to read is simple: either an entire datagram has been received or it has not. With TCP it gets more complicated, as additional variables such as the socket’s low-water mark come into play.</p>
+<p>We also refer to <code>recvfrom</code> as a system call to differentiating between our application and the kernel, regardless of how <code>recvfrom</code> is implemented (system call on BSD and function that invokes <code>getmsg</code> system call on System V). There is normally a switch from running in application to running in the kernel, followed at some time later by a return to the application.</p>
+<p>In the figure above, the process calls <code>recvfrom</code> and the system call does not return until the datagram arrives and is copied into our application buffer, or an error occurs. The most common error is the system call being interrupted by signal. We say that the process is blocked the entire time from when it calls <code>recvfrom</code> until it returns. When <code>recvfrom</code> return successfully, our application process the datagram.</p>
+<h3 id="Nonblocking-IO-Model"><a href="#Nonblocking-IO-Model" class="headerlink" title="Nonblocking IO Model"></a>Nonblocking IO Model</h3><p>When a socket is set to be nonblocking, we are telling the kernel “When an IO operation that I request cannot be completed without putting the process to sleep, do not put the process to sleep, but return an error instead”. The figure is below:</p>
+<p><img src="https://ws4.sinaimg.cn/large/8a79c363ly1g43bp0b7gng20dw07q74m.gif" alt="nonblocking-io.gif"></p>
+<ul>
+<li>For the first three <code>recvfrom</code>, there is no data to return and the kernel immediately returns an error of <code>EWOULDBLOCK</code>.</li>
+<li>For the forth time we call <code>recvfrom</code>, a datagram is ready, it is copied into our application buffer, and <code>recvfrom</code> returns successfully. We then process the data.</li>
+</ul>
+<p>When an application sits in a loop calling <code>recvfrom</code> on a nonblocking descriptor like this, it is called <strong>polling</strong>. The application is continually polling the kernel to see if some operation is ready. This is often a waste of CPU time, but this model is occasionally encountered, normally on systems dedicated to one function.</p>
+<h3 id="IO-Multiplexing-Model"><a href="#IO-Multiplexing-Model" class="headerlink" title="IO Multiplexing Model"></a>IO Multiplexing Model</h3><p>With <strong>IO multiplexing</strong>, we call <code>select</code> or <code>poll</code> and block in one of these two system calls, instead of blocking in the actual IO system call. The figure is a summary of the IO multiplexing model:</p>
+<p><img src="https://wx2.sinaimg.cn/large/8a79c363ly1g43c3o4uizg20dw07kmxf.gif" alt="io-multiplexing.gif"></p>
+<p>We block in a call to <code>select</code>, waiting for the datagram socket to be readable. When <code>select</code> returns that the socket is readable, we then call <code>recvfrom</code> to copy the datagram into our application buffer.</p>
+<p>Comparing blocking model:</p>
+<ul>
+<li>Disadvantage: using <code>select</code> requires two system call (<code>select</code> and <code>recvfrom</code>) instead of one</li>
+<li>Advantage: we can wait for more than one descriptor to be ready</li>
+</ul>
+<p>Another closely related IO model is to use multithreading with blocking IO. That model very closely resembles the model described above, except that instead of using <code>select</code> to block on multiple file descriptors, the program uses multiple threads (one per file descriptor), and each thread is then free to call blocking system calls like <code>recvfrom</code>.</p>
+<h3 id="Signal-Driven-IO-Model"><a href="#Signal-Driven-IO-Model" class="headerlink" title="Signal-Driven IO Model"></a>Signal-Driven IO Model</h3><p>The <strong>signal-driven IO model</strong> uses signals, telling the kernel to notify us with the <code>SIGIO</code> signal when descriptor is ready. The figure is below:</p>
+<p><img src="https://ws3.sinaimg.cn/large/8a79c363ly1g43cg44s7lg20dw07mmxd.gif" alt="signal-driven-io.gif"></p>
+<ul>
+<li>We first enable the socket for signal-driven IO and install a signal handler using the <code>sigaction</code> system call. The return from this system is immediate and our process continues; it is not blocked.</li>
+<li>When the datagram is ready to be read, the <code>SIGIO</code> signal is generated for our process. We can either:<ul>
+<li>read the datagram from the signal handler by calling <code>recvfrom</code> and then notify the main loop that data is ready to be process.</li>
+<li>notify the main loop and let it read the datagram.</li>
+</ul>
+</li>
+</ul>
+<p>The advantage to this model is that we are not blocked while waiting for the datagram to arrive. The main loop can continue executing and just wait to be notified by the signal handler that either the data is ready to process or the datagram is ready to be read.</p>
+<h3 id="Asynchronous-IO-model"><a href="#Asynchronous-IO-model" class="headerlink" title="Asynchronous IO model"></a>Asynchronous IO model</h3><p><strong>Asynchronous IO</strong> is defined by the POSIX specification, and various differences in the read-time function that appeared in the various standards which came together to form the current POSIX specification have been reconciled.</p>
+<p>These functions work by telling the kernel to start the operation and to notify us when then entire operation (including the copy of the data from the kernel to our buffer) is complete. <strong>The main difference between this model and the signal-driven IO model is that with signal-driven IO, the kernel tells us when IO operation can be initiated, but asynchronous IO, the kernel tells us when an IO operation is complete.</strong> See the figure below for example:</p>
+<p><img src="https://ws2.sinaimg.cn/large/8a79c363ly1g43d32olhtg20dw07s0su.gif" alt="asynchronous-io.gif"></p>
+<ul>
+<li>We call <code>aio_read</code> (the POSIX asynchronous IO function begin with <code>aio_</code> or <code>lio_</code>, <strong>This system call returns immediately and our process is not blocked while waiting for the IO to complete</strong>) and pass the kernel the following:<ul>
+<li>descriptor, buffer pointer, buffer size (the same three arguments for <code>read</code>)</li>
+<li>file offset (similar to <code>lseek</code>)</li>
+<li>and how to notify us when the entire operation is complete<blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>We assume in this example that we ask the kernel to generate some signal when the operation is complete. This signal is not generated until the data has been copied into our application buffer, which is different from the signal-driven IO model.</li>
+</ul>
+<h2 id="Comparison-of-the-IO-models"><a href="#Comparison-of-the-IO-models" class="headerlink" title="Comparison of the IO models"></a>Comparison of the IO models</h2><p>The figure below is a comparison of the five different IO models:</p>
+<p><img src="https://ws1.sinaimg.cn/large/8a79c363ly1g43dpda7cvg20dw07mt95.gif" alt="comparison-io.gif"></p>
+<p>The main difference between the first four models is the first phase, as the second phase in the first four models is the same: the process is blocked in a call to <code>recvfrom</code> while the data is copied from the kernel to the caller’s buffer. Asynchronous IO, however, handles both phases and is different from the first four.</p>
+<h2 id="Synchronous-IO-versus-Asynchronous-IO"><a href="#Synchronous-IO-versus-Asynchronous-IO" class="headerlink" title="Synchronous IO versus Asynchronous IO"></a>Synchronous IO versus Asynchronous IO</h2><p>POSIX defines these two terms as follows:</p>
+<ul>
+<li>A synchronous IO operation causes the requesting process to be blocked until that IO operation completes.</li>
+<li>An asynchronous IO operation does not cause the requesting process to be blocked.</li>
+</ul>
+<p>Using these definitions, the first four IO models (blocking, nonblocking, IO complexing and signal-driven IO) are all synchronous because the actual IO operation (<code>recvfrom</code>) blocks the process. Only the asynchronous IO model matches the asynchronous IO definition.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://notes.shichao.io/unp/ch6/" target="_blank" rel="noopener">Chapter 6. I/O Multiplexing: The select and poll Functions</a></li>
+<li><a href="http://www.masterraghu.com/subjects/np/introduction/unix_network_programming_v1.3/ch06lev1sec2.html" target="_blank" rel="noopener">UNP - 6.2 I/O Models</a></li>
+</ul>
 
   </div>
 </article>
@@ -181,7 +262,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO-Models"><span class="toc-number">2.</span> <span class="toc-text">IO Models</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blocking-IO-Model"><span class="toc-number">2.1.</span> <span class="toc-text">Blocking IO Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nonblocking-IO-Model"><span class="toc-number">2.2.</span> <span class="toc-text">Nonblocking IO Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO-Multiplexing-Model"><span class="toc-number">2.3.</span> <span class="toc-text">IO Multiplexing Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Signal-Driven-IO-Model"><span class="toc-number">2.4.</span> <span class="toc-text">Signal-Driven IO Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Asynchronous-IO-model"><span class="toc-number">2.5.</span> <span class="toc-text">Asynchronous IO model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparison-of-the-IO-models"><span class="toc-number">3.</span> <span class="toc-text">Comparison of the IO models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Synchronous-IO-versus-Asynchronous-IO"><span class="toc-number">4.</span> <span class="toc-text">Synchronous IO versus Asynchronous IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
