@@ -8,18 +8,18 @@
     <!-- fix Sina weibo image host temporarily -->
     <meta name="referrer" content="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争">
+    <meta name="description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争  Redisredis 内部使用的是文件事件处理器（file event handler），这个文件时间处理器是单线程的，所以说 redis 叫单线程模型。 Redis为什么单线程效率也这么高： 纯内存操作 核心是基于非阻塞的 IO 多路复用 单线程避免了一些场景下频繁">
 <meta name="keywords" content="advanced-java,cache">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Advanced Java】缓存">
 <meta property="og:url" content="https://blog.pwxcoo.com/2019/06/03/【Advanced-Java】缓存/index.html">
 <meta property="og:site_name" content="PWXCOO">
-<meta property="og:description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争">
+<meta property="og:description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争  Redisredis 内部使用的是文件事件处理器（file event handler），这个文件时间处理器是单线程的，所以说 redis 叫单线程模型。 Redis为什么单线程效率也这么高： 纯内存操作 核心是基于非阻塞的 IO 多路复用 单线程避免了一些场景下频繁">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-03T11:34:36.831Z">
+<meta property="og:updated_time" content="2019-06-17T04:49:24.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Advanced Java】缓存">
-<meta name="twitter:description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争">
+<meta name="twitter:description" content="缓存优缺点优点：  高性能 高并发  缺点，因为缓存可能出现的问题：  缓存和数据库双写不一致 缓存雪崩，缓存穿透 缓存并发竞争  Redisredis 内部使用的是文件事件处理器（file event handler），这个文件时间处理器是单线程的，所以说 redis 叫单线程模型。 Redis为什么单线程效率也这么高： 纯内存操作 核心是基于非阻塞的 IO 多路复用 单线程避免了一些场景下频繁">
     
     
         
@@ -105,7 +105,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存优缺点"><span class="toc-number">1.</span> <span class="toc-text">缓存优缺点</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存优缺点"><span class="toc-number">1.</span> <span class="toc-text">缓存优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-number">2.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis为什么单线程效率也这么高："><span class="toc-number">2.1.</span> <span class="toc-text">Redis为什么单线程效率也这么高：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis过期策略"><span class="toc-number">2.2.</span> <span class="toc-text">Redis过期策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis内存淘汰机制"><span class="toc-number">2.3.</span> <span class="toc-text">Redis内存淘汰机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis实现高并发"><span class="toc-number">2.4.</span> <span class="toc-text">Redis实现高并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis实现高可用"><span class="toc-number">2.5.</span> <span class="toc-text">Redis实现高可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis实现持久化"><span class="toc-number">2.6.</span> <span class="toc-text">Redis实现持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis集群"><span class="toc-number">2.7.</span> <span class="toc-text">Redis集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存雪崩"><span class="toc-number">2.8.</span> <span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存穿透"><span class="toc-number">2.9.</span> <span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存击穿"><span class="toc-number">2.10.</span> <span class="toc-text">缓存击穿</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -162,6 +162,45 @@
 <li>缓存雪崩，缓存穿透</li>
 <li>缓存并发竞争</li>
 </ol>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>redis 内部使用的是文件事件处理器（file event handler），这个文件时间处理器是单线程的，所以说 redis 叫单线程模型。</p>
+<h3 id="Redis为什么单线程效率也这么高："><a href="#Redis为什么单线程效率也这么高：" class="headerlink" title="Redis为什么单线程效率也这么高："></a>Redis为什么单线程效率也这么高：</h3><ol>
+<li>纯内存操作</li>
+<li>核心是基于非阻塞的 IO 多路复用</li>
+<li>单线程避免了一些场景下频繁上下文切换的问题，预防了多线程可能产生的竞争问题</li>
+</ol>
+<h3 id="Redis过期策略"><a href="#Redis过期策略" class="headerlink" title="Redis过期策略"></a>Redis过期策略</h3><p>定期删除（部分） + 惰性删除</p>
+<h3 id="Redis内存淘汰机制"><a href="#Redis内存淘汰机制" class="headerlink" title="Redis内存淘汰机制"></a>Redis内存淘汰机制</h3><ul>
+<li>noeviction</li>
+<li><strong>allkeys-lru</strong></li>
+<li>allkeys-random</li>
+<li>volatile-lru (volatile 表示从设置了过期时间的建空间里操作)</li>
+<li>volatile-random</li>
+<li>volatile-ttl</li>
+</ul>
+<h3 id="Redis实现高并发"><a href="#Redis实现高并发" class="headerlink" title="Redis实现高并发"></a>Redis实现高并发</h3><p>主从架构</p>
+<h3 id="Redis实现高可用"><a href="#Redis实现高可用" class="headerlink" title="Redis实现高可用"></a>Redis实现高可用</h3><p>哨兵，实现主备切换</p>
+<h3 id="Redis实现持久化"><a href="#Redis实现持久化" class="headerlink" title="Redis实现持久化"></a>Redis实现持久化</h3><ul>
+<li>RDB：周期性持久化</li>
+<li>AOF：对每条写入命令作为日志，以 append-only 的模式写入一个日志文件中</li>
+</ul>
+<p>如果同时使用 RDB 和 AOF 两种持久化机制，那么在 redis 重启的时候，会使用 AOF 来重新构建数据，因为 AOF 中的数据更加完整。</p>
+<h3 id="Redis集群"><a href="#Redis集群" class="headerlink" title="Redis集群"></a>Redis集群</h3><ul>
+<li>redis cluster 可以自动将数据切片，每个 master 上放一部分数据，节点之间通信用 gossip 协议（每个节点持有一份元数据）</li>
+<li>分布式寻址（一致性哈希算法）</li>
+<li>主从切换<ul>
+<li>判断节点宕机（超过半数）</li>
+<li>过滤 slave 节点（和 master 节点断开时间超过了某时间，不配变成 master）</li>
+<li>从节点选举（超过半数）</li>
+</ul>
+</li>
+</ul>
+<h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><p>事前：redis 高可用，主从+哨兵，redis cluster，避免全盘崩溃。<br>事中：本地 ehcache 缓存 + hystrix 限流&amp;降级，避免 MySQL 被打死。<br>事后：redis 持久化，一旦重启，自动从磁盘上加载数据，快速恢复缓存数据。</p>
+<h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><p>非正常请求也存一个空值到缓存里，并设置过期时间。</p>
+<h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><p>热点数据突然失效。</p>
+<ol>
+<li>热点不过期</li>
+<li>redis 或 zookeeper 实现互斥锁，等待第一个请求建完缓存后在释放锁</li>
+</ol>
 
   </div>
 </article>
@@ -193,7 +232,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存优缺点"><span class="toc-number">1.</span> <span class="toc-text">缓存优缺点</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存优缺点"><span class="toc-number">1.</span> <span class="toc-text">缓存优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-number">2.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis为什么单线程效率也这么高："><span class="toc-number">2.1.</span> <span class="toc-text">Redis为什么单线程效率也这么高：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis过期策略"><span class="toc-number">2.2.</span> <span class="toc-text">Redis过期策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis内存淘汰机制"><span class="toc-number">2.3.</span> <span class="toc-text">Redis内存淘汰机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis实现高并发"><span class="toc-number">2.4.</span> <span class="toc-text">Redis实现高并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis实现高可用"><span class="toc-number">2.5.</span> <span class="toc-text">Redis实现高可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis实现持久化"><span class="toc-number">2.6.</span> <span class="toc-text">Redis实现持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis集群"><span class="toc-number">2.7.</span> <span class="toc-text">Redis集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存雪崩"><span class="toc-number">2.8.</span> <span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存穿透"><span class="toc-number">2.9.</span> <span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存击穿"><span class="toc-number">2.10.</span> <span class="toc-text">缓存击穿</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
