@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1ooi6ga3vj20wu0jitac.jpg">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/8a79c363ly1g43bgpo5fxj20ki0fkwfv.jpg">
-<meta property="og:updated_time" content="2019-06-16T13:27:36.572Z">
+<meta property="og:updated_time" content="2019-06-21T08:54:48.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【编程笔记】0">
 <meta name="twitter:description" content="文件打开模式文件打开模式的选项在每个编程语言里都有（因为其实基本都只是 wrap 了 C 的 IO 模块，所以大同小异）。  source: open-built-in-function-difference-between-modes-a-a-w-w-and-r? remove trailing spaces移除行尾后的空格，不然有时候会污染 git 的 diff。 在 VSCode 里把 &amp;q">
@@ -108,7 +108,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件打开模式"><span class="toc-number">1.</span> <span class="toc-text">文件打开模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#remove-trailing-spaces"><span class="toc-number">2.</span> <span class="toc-text">remove trailing spaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-number">3.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带宽（bandwidth）"><span class="toc-number">4.</span> <span class="toc-text">带宽（bandwidth）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二项式定理（binomial-theorem）"><span class="toc-number">5.</span> <span class="toc-text">二项式定理（binomial theorem）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统时间线"><span class="toc-number">6.</span> <span class="toc-text">操作系统时间线</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件打开模式"><span class="toc-number">1.</span> <span class="toc-text">文件打开模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#remove-trailing-spaces"><span class="toc-number">2.</span> <span class="toc-text">remove trailing spaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-number">3.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带宽（bandwidth）"><span class="toc-number">4.</span> <span class="toc-text">带宽（bandwidth）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二项式定理（binomial-theorem）"><span class="toc-number">5.</span> <span class="toc-text">二项式定理（binomial theorem）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统时间线"><span class="toc-number">6.</span> <span class="toc-text">操作系统时间线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x3f3f3f3f"><span class="toc-number">7.</span> <span class="toc-text">0x3f3f3f3f</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -184,6 +184,13 @@
 <h2 id="带宽（bandwidth）"><a href="#带宽（bandwidth）" class="headerlink" title="带宽（bandwidth）"></a>带宽（bandwidth）</h2><p>1Mbps = 1M bit per second = 1024 bit per second = 128 kb/s</p>
 <h2 id="二项式定理（binomial-theorem）"><a href="#二项式定理（binomial-theorem）" class="headerlink" title="二项式定理（binomial theorem）"></a>二项式定理（binomial theorem）</h2><p>$$<br>(x + y)^{n} = \sum_{k=0}^{n} {n \choose k} x^{n-k} y^{k}<br>$$</p>
 <h2 id="操作系统时间线"><a href="#操作系统时间线" class="headerlink" title="操作系统时间线"></a>操作系统时间线</h2><p><img src="https://wx3.sinaimg.cn/large/8a79c363ly1g43bgpo5fxj20ki0fkwfv.jpg" alt="os-timeline.svg"></p>
+<h2 id="0x3f3f3f3f"><a href="#0x3f3f3f3f" class="headerlink" title="0x3f3f3f3f"></a>0x3f3f3f3f</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br></pre></td></tr></table></figure>
+<p>在数据范围不超过 $10^{9}$ 的情况下，可以作为无穷大使用，有两个好处：</p>
+<ol>
+<li>INF + INF 仍然是正数</li>
+<li>可以在 memset 中使用 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>(a, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(a))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
   </div>
 </article>
@@ -215,7 +222,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件打开模式"><span class="toc-number">1.</span> <span class="toc-text">文件打开模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#remove-trailing-spaces"><span class="toc-number">2.</span> <span class="toc-text">remove trailing spaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-number">3.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带宽（bandwidth）"><span class="toc-number">4.</span> <span class="toc-text">带宽（bandwidth）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二项式定理（binomial-theorem）"><span class="toc-number">5.</span> <span class="toc-text">二项式定理（binomial theorem）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统时间线"><span class="toc-number">6.</span> <span class="toc-text">操作系统时间线</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件打开模式"><span class="toc-number">1.</span> <span class="toc-text">文件打开模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#remove-trailing-spaces"><span class="toc-number">2.</span> <span class="toc-text">remove trailing spaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-number">3.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带宽（bandwidth）"><span class="toc-number">4.</span> <span class="toc-text">带宽（bandwidth）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二项式定理（binomial-theorem）"><span class="toc-number">5.</span> <span class="toc-text">二项式定理（binomial theorem）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统时间线"><span class="toc-number">6.</span> <span class="toc-text">操作系统时间线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x3f3f3f3f"><span class="toc-number">7.</span> <span class="toc-text">0x3f3f3f3f</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
