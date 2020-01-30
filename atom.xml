@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.pwxcoo.com/"/>
-  <updated>2019-06-16T14:49:13.331Z</updated>
+  <updated>2020-01-18T09:56:21.449Z</updated>
   <id>https://blog.pwxcoo.com/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>volatile</title>
+    <link href="https://blog.pwxcoo.com/2020/01/18/volatile/"/>
+    <id>https://blog.pwxcoo.com/2020/01/18/volatile/</id>
+    <published>2020-01-18T07:18:26.000Z</published>
+    <updated>2020-01-18T09:56:21.449Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h2><p>Locks offer two primary features: <strong>mutual exclusion</strong> and <strong>visibility</strong>.</p><ul><li><strong>Mutual exclusion</strong> means that only one thread at a time may hold a given lock, and this property can be used to implement protocols for coordinating access to shared data such that only one thread at a time will be using the shard data.</li><li><strong>Visibility</strong> is more subtle and has to do with ensuring that change made to shared data prior to releasing a lock are made visible to another thread that subsequently acquires that lock – without the visibility guarantees provides by synchronization, thread could see stale or inconsistent values for shared variables, which could cause a host of serious problems.</li></ul><h2 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h2><p>Volatile variables in the Java language can be thought of as “<code>synchronized</code> lite”; they require less coding to use than <code>synchronized</code> blocks and often have less runtime overhead, but they can only be used to do a subset of the things that <code>synchronized</code> can. In cases where reads greatly out number writes, volatile variables can often reduce the performance cost of synchronization compared to locking.</p><p>Volatile provides two guarantees:</p><ul><li><strong>visibility</strong>. Volatile variables share the visibility features of synchronized, but none of atomicity features. This mean that threads will automatically see the most up-to-date value for volatile variables.</li><li><strong>establish a happen-before relationship</strong>. (In Java5 or later)</li></ul><h3 id="Condition-for-correct-use-of-volatile"><a href="#Condition-for-correct-use-of-volatile" class="headerlink" title="Condition for correct use of volatile"></a>Condition for correct use of volatile</h3><p>You can use volatile variables instead of locks only under a restricted set of circumstances. Both of the following criteria must be met for volatile variables to provide the desired thread-safety:</p><ul><li>Writes to the variables do not depend on its current value.</li><li>The variable does not participate in invariants with other variables.</li></ul><h3 id="Implement-volatile"><a href="#Implement-volatile" class="headerlink" title="Implement volatile"></a>Implement volatile</h3><p><code>Memory Barrier</code>. More details see <a href="http://gee.cs.oswego.edu/dl/jmm/cookbook.html" target="_blank" rel="noopener">The JSR-133 Cookbook for Compiler Writers</a>.</p><h3 id="Change-in-JSR-133"><a href="#Change-in-JSR-133" class="headerlink" title="Change in JSR-133"></a>Change in JSR-133</h3><p>Forbid reordering between volatile variable and normal variable.</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://www.ibm.com/developerworks/library/j-jtp06197/index.html" target="_blank" rel="noopener">Managing volatility</a></li><li><a href="https://www.ibm.com/developerworks/library/j-jtp02244/index.html" target="_blank" rel="noopener">Fixing the Java Memory Model, Part 1</a></li><li><a href="https://www.ibm.com/developerworks/library/j-jtp03304/" target="_blank" rel="noopener">Fixing the Java Memory Model, Part 2</a></li><li><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">The Java Memory Model</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="note" scheme="https://blog.pwxcoo.com/categories/note/"/>
+    
+    
+      <category term="java" scheme="https://blog.pwxcoo.com/tags/java/"/>
+    
+      <category term="concurrent" scheme="https://blog.pwxcoo.com/tags/concurrent/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Source Code】DelayQueue</title>
+    <link href="https://blog.pwxcoo.com/2019/11/18/Source-Code-DelayQueue/"/>
+    <id>https://blog.pwxcoo.com/2019/11/18/Source-Code-DelayQueue/</id>
+    <published>2019-11-17T16:34:27.000Z</published>
+    <updated>2020-01-18T06:26:43.532Z</updated>
+    
+    <content type="html"><![CDATA[<p>An unbound blocking queue of Delay elements, in which an element can only be taken when its delay has expired. The head of queue is that Delayed element whose delay expired furthest in the past. If no delay has expired there is no head and poll wil return null. Expiration occurs when an element’s getDelay(TimeUnit.NANOSECONDS) method return a value less than or equal to zero. Even though unexpired elements cannot be removed using take or poll, they are otherwise treated as normal elements. For example, the size method returns the count of both expired and unexpired elements. This queue does not permit null element.</p><p><strong>In short, the queue is a Priority Queue. Using leader-follower mode to reduce followers’ dispatch.</strong></p><h2 id="private-variable"><a href="#private-variable" class="headerlink" title="private variable"></a>private variable</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">transient</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> PriorityQueue&lt;E&gt; q = <span class="keyword">new</span> PriorityQueue&lt;E&gt;();</span><br><span class="line"><span class="keyword">private</span> Thread leader = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Condition signalled when a newer element becomes available</span></span><br><span class="line"><span class="comment">* at the head of the queue or a new thread may need to</span></span><br><span class="line"><span class="comment">* become leader.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Condition available = lock.newCondition();</span><br></pre></td></tr></table></figure><h2 id="offer"><a href="#offer" class="headerlink" title="offer()"></a>offer()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Inserts the specified element into this delay queue.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> e the element to add</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@code</span> true&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> NullPointerException if the specified element is null</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</span><br><span class="line">    lock.lock();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        q.offer(e);</span><br><span class="line">        <span class="keyword">if</span> (q.peek() == e) &#123;</span><br><span class="line">            <span class="comment">// 如果新增的元素需要的延迟更小，leader置为null，唤醒线程来抢锁</span></span><br><span class="line">            leader = <span class="keyword">null</span>;</span><br><span class="line">            available.signal();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="take"><a href="#take" class="headerlink" title="take()"></a>take()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Retrieves and removes the head of this queue, waiting if necessary</span></span><br><span class="line"><span class="comment"> * until an element with an expired delay is available on this queue.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the head of this queue</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> InterruptedException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">take</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</span><br><span class="line">    lock.lockInterruptibly();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            E first = q.peek();</span><br><span class="line">            <span class="keyword">if</span> (first == <span class="keyword">null</span>)</span><br><span class="line">                <span class="comment">// 队列是空的，就等着offer之后插进元素来唤醒</span></span><br><span class="line">                available.await();</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">long</span> delay = first.getDelay(NANOSECONDS);</span><br><span class="line">                <span class="keyword">if</span> (delay &lt;= <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> q.poll();</span><br><span class="line">                <span class="comment">// 防止因为这个线程一直被阻塞，但其实这个对象可能已经被take掉了，却一直拿着对象的引用而无法被垃圾回收。这个点太细了</span></span><br><span class="line">                first = <span class="keyword">null</span>; <span class="comment">// don't retain ref while waiting</span></span><br><span class="line">                <span class="keyword">if</span> (leader != <span class="keyword">null</span>)</span><br><span class="line">                    <span class="comment">// 有leader，follower就一直等着就好了</span></span><br><span class="line">                    available.await();</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 没有leader，该线程变成leader</span></span><br><span class="line">                    Thread thisThread = Thread.currentThread();</span><br><span class="line">                    leader = thisThread;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="comment">// 定时阻塞</span></span><br><span class="line">                        available.awaitNanos(delay);</span><br><span class="line">                    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                        <span class="comment">// 什么情况下 leader != thisThread 呢？offer之后重新搞了leader，然后唤醒了别的线程抢到了leader。</span></span><br><span class="line">                        <span class="keyword">if</span> (leader == thisThread)</span><br><span class="line">                            leader = <span class="keyword">null</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (leader == <span class="keyword">null</span> &amp;&amp; q.peek() != <span class="keyword">null</span>)</span><br><span class="line">            <span class="comment">// 如果没有leader，队列不为空的情况下，需要找个线程来当leader</span></span><br><span class="line">            available.signal();</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><ul><li><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/DelayQueue.html" target="_blank" rel="noopener">oracle-docs: Class DelayQueue<e extends="" delayed=""></e></a></li><li><a href="https://github.com/Himansu-Nayak/java7-sourcecode/blob/master/java/util/concurrent/DelayQueue.java" target="_blank" rel="noopener">source code: DelayQueue</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="source" scheme="https://blog.pwxcoo.com/categories/source/"/>
+    
+    
+      <category term="java" scheme="https://blog.pwxcoo.com/tags/java/"/>
+    
+      <category term="concurrent" scheme="https://blog.pwxcoo.com/tags/concurrent/"/>
+    
+      <category term="source_code" scheme="https://blog.pwxcoo.com/tags/source-code/"/>
+    
+  </entry>
   
   <entry>
     <title>IO Multiplexing: The select and poll Function</title>
@@ -130,9 +192,9 @@
       <category term="base" scheme="https://blog.pwxcoo.com/categories/base/"/>
     
     
-      <category term="mq" scheme="https://blog.pwxcoo.com/tags/mq/"/>
-    
       <category term="advanced-java" scheme="https://blog.pwxcoo.com/tags/advanced-java/"/>
+    
+      <category term="mq" scheme="https://blog.pwxcoo.com/tags/mq/"/>
     
   </entry>
   
