@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.pwxcoo.com/"/>
-  <updated>2020-01-18T09:56:21.449Z</updated>
+  <updated>2020-02-23T13:45:14.903Z</updated>
   <id>https://blog.pwxcoo.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mathematical vocabulary</title>
+    <link href="https://blog.pwxcoo.com/2020/02/23/mathematical-vocabulary/"/>
+    <id>https://blog.pwxcoo.com/2020/02/23/mathematical-vocabulary/</id>
+    <published>2020-02-23T13:02:46.000Z</published>
+    <updated>2020-02-23T13:45:14.903Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th style="text-align:center"><strong>ENGLISH</strong></th><th style="text-align:center"><strong>CHINESE</strong></th></tr></thead><tbody><tr><td style="text-align:center">annual rate of interest</td><td style="text-align:center">年利率</td></tr><tr><td style="text-align:center">approximate value</td><td style="text-align:center">近似值</td></tr><tr><td style="text-align:center">arithmetic sequence</td><td style="text-align:center">等差数列</td></tr><tr><td style="text-align:center">associative law</td><td style="text-align:center">结合律</td></tr><tr><td style="text-align:center">asymptotic line</td><td style="text-align:center">渐近线</td></tr><tr><td style="text-align:center">augmented matrix</td><td style="text-align:center">增广矩阵</td></tr><tr><td style="text-align:center">binomial</td><td style="text-align:center">二项式</td></tr><tr><td style="text-align:center">binomial theorem</td><td style="text-align:center">二项式定理</td></tr><tr><td style="text-align:center">Cartesian coordinates</td><td style="text-align:center">笛卡尔坐标</td></tr><tr><td style="text-align:center">Cartesian product</td><td style="text-align:center">笛卡尔积</td></tr><tr><td style="text-align:center">Cauchy inequality</td><td style="text-align:center">柯西不等式</td></tr><tr><td style="text-align:center">circulating decimal</td><td style="text-align:center">循环小数</td></tr><tr><td style="text-align:center">clockwise</td><td style="text-align:center">顺时针的</td></tr><tr><td style="text-align:center">coefficient</td><td style="text-align:center">系数</td></tr><tr><td style="text-align:center">common factor</td><td style="text-align:center">公因子</td></tr><tr><td style="text-align:center">common logarithm</td><td style="text-align:center">常用对数</td></tr><tr><td style="text-align:center">common multiple</td><td style="text-align:center">公倍数</td></tr><tr><td style="text-align:center">common ratio</td><td style="text-align:center">公比</td></tr><tr><td style="text-align:center">commutative law</td><td style="text-align:center">交换律</td></tr><tr><td style="text-align:center">complement</td><td style="text-align:center">余</td></tr><tr><td style="text-align:center">component</td><td style="text-align:center">分量；联通分量</td></tr><tr><td style="text-align:center">compound interest</td><td style="text-align:center">复利</td></tr><tr><td style="text-align:center">convergence</td><td style="text-align:center">收敛</td></tr><tr><td style="text-align:center">cosine</td><td style="text-align:center">余弦</td></tr><tr><td style="text-align:center">cotangent</td><td style="text-align:center">余切</td></tr><tr><td style="text-align:center">counterclockwise</td><td style="text-align:center">逆时针的</td></tr><tr><td style="text-align:center">cross product</td><td style="text-align:center">叉积；向量积；外积</td></tr><tr><td style="text-align:center">definite integral</td><td style="text-align:center">定积分</td></tr><tr><td style="text-align:center">denominator</td><td style="text-align:center">分母</td></tr><tr><td style="text-align:center">derivative</td><td style="text-align:center">导数</td></tr><tr><td style="text-align:center">diameter</td><td style="text-align:center">直径</td></tr><tr><td style="text-align:center">differentiable</td><td style="text-align:center">可微分的</td></tr><tr><td style="text-align:center">divergence</td><td style="text-align:center">发散</td></tr><tr><td style="text-align:center">dividend</td><td style="text-align:center">被除数</td></tr><tr><td style="text-align:center">divisor</td><td style="text-align:center">因子；因式；因数；除数</td></tr><tr><td style="text-align:center">exponent</td><td style="text-align:center">指数</td></tr><tr><td style="text-align:center">extreme value</td><td style="text-align:center">极值</td></tr><tr><td style="text-align:center">factorial</td><td style="text-align:center">阶乘</td></tr><tr><td style="text-align:center">fraction</td><td style="text-align:center">分数；分式</td></tr><tr><td style="text-align:center">geometric sequence</td><td style="text-align:center">等比数列</td></tr><tr><td style="text-align:center">irrational number</td><td style="text-align:center">无理数</td></tr><tr><td style="text-align:center">least common multiple</td><td style="text-align:center">最小公倍数</td></tr><tr><td style="text-align:center">mean</td><td style="text-align:center">平均；平均值；平均数</td></tr><tr><td style="text-align:center">median</td><td style="text-align:center">中位数；中线</td></tr><tr><td style="text-align:center">minuend</td><td style="text-align:center">被减数</td></tr><tr><td style="text-align:center">monomial</td><td style="text-align:center">单项式；单项的</td></tr><tr><td style="text-align:center">natural logarithm</td><td style="text-align:center">自然对数</td></tr><tr><td style="text-align:center">normal vector</td><td style="text-align:center">法向量</td></tr><tr><td style="text-align:center">orthogonal</td><td style="text-align:center">正交；直交</td></tr><tr><td style="text-align:center">parabola</td><td style="text-align:center">拋物线</td></tr><tr><td style="text-align:center">parallel</td><td style="text-align:center">平行</td></tr><tr><td style="text-align:center">plane</td><td style="text-align:center">平面</td></tr><tr><td style="text-align:center">point of tangency</td><td style="text-align:center">切点</td></tr><tr><td style="text-align:center">polynomial</td><td style="text-align:center">多项式</td></tr><tr><td style="text-align:center">quadratic function</td><td style="text-align:center">二次函数</td></tr><tr><td style="text-align:center">rational number</td><td style="text-align:center">有理数</td></tr><tr><td style="text-align:center">sine</td><td style="text-align:center">正弦</td></tr><tr><td style="text-align:center">slope</td><td style="text-align:center">斜率</td></tr><tr><td style="text-align:center">square root</td><td style="text-align:center">平方根</td></tr><tr><td style="text-align:center">standard deviation</td><td style="text-align:center">标准差</td></tr><tr><td style="text-align:center">sum-to-product formula</td><td style="text-align:center">和差化积公式</td></tr><tr><td style="text-align:center">supplementary angle</td><td style="text-align:center">补角</td></tr><tr><td style="text-align:center">tangent</td><td style="text-align:center">正切</td></tr><tr><td style="text-align:center">tangent line</td><td style="text-align:center">切线</td></tr><tr><td style="text-align:center">wave crest</td><td style="text-align:center">波峰</td></tr><tr><td style="text-align:center">wave trough</td><td style="text-align:center">波谷</td></tr></tbody></table><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="http://www.mathland.idv.tw/scene/tables/mathchieng.pdf" target="_blank" rel="noopener">數學名詞中英對照表</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="memo" scheme="https://blog.pwxcoo.com/categories/memo/"/>
+    
+    
+      <category term="memo" scheme="https://blog.pwxcoo.com/tags/memo/"/>
+    
+      <category term="mathematic" scheme="https://blog.pwxcoo.com/tags/mathematic/"/>
+    
+  </entry>
   
   <entry>
     <title>volatile</title>
@@ -192,9 +222,9 @@
       <category term="base" scheme="https://blog.pwxcoo.com/categories/base/"/>
     
     
-      <category term="advanced-java" scheme="https://blog.pwxcoo.com/tags/advanced-java/"/>
-    
       <category term="mq" scheme="https://blog.pwxcoo.com/tags/mq/"/>
+    
+      <category term="advanced-java" scheme="https://blog.pwxcoo.com/tags/advanced-java/"/>
     
   </entry>
   
