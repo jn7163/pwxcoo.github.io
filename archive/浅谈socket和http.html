@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="今天试了 socket 和网络编程相关的东西。计算机网络是上个学期的课，忘了好多的说。。太久不用果然是学一点新的东西，旧的都忘了。。还有一部分原因也是自己当初学得仅仅停留在老师的期末考范围里，考纲以外的东西基本没做太多了解。。网络的知识点太多了。。 正好趁这次机会好好看了一下 socket 和网络编程相关的一些东西，跟之前比起来有了很多新的体会和认识。 计算机网络协议分层物，数，网，传，会，表，应">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1oop98hctj20e30a53yt.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1oopkd9x4j20n60owtbx.jpg">
-<meta property="og:updated_time" content="2019-06-10T03:20:35.389Z">
+<meta property="og:image" content="https://blog.pwxcoo.com/image/tcpandudp.png">
+<meta property="og:image" content="https://blog.pwxcoo.com/image/tcpProcess.png">
+<meta property="og:updated_time" content="2020-06-25T09:46:38.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈socket和http">
 <meta name="twitter:description" content="今天试了 socket 和网络编程相关的东西。计算机网络是上个学期的课，忘了好多的说。。太久不用果然是学一点新的东西，旧的都忘了。。还有一部分原因也是自己当初学得仅仅停留在老师的期末考范围里，考纲以外的东西基本没做太多了解。。网络的知识点太多了。。 正好趁这次机会好好看了一下 socket 和网络编程相关的一些东西，跟之前比起来有了很多新的体会和认识。 计算机网络协议分层物，数，网，传，会，表，应">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1oop98hctj20e30a53yt.jpg">
+<meta name="twitter:image" content="https://blog.pwxcoo.com/image/tcpandudp.png">
     
     
         
@@ -163,9 +163,9 @@
 <p>说是没什么关系，但是其实还是有一点联系，可以理解为 WebSocket 是 Socket 的上层实现，WebSocket 是有当初设计 Socket 的通信理念在里头的，Socket 是传输层的 API，而 WebSocket 是应用层的协议。</p>
 <p>WebSocket 跟 HTTP 一样，是应用层的协议，可以实现浏览器与服务器的全双工通信，我之前做过一个网页的社交聊天的应用，用的就是 WebSocket 技术，具体在这里就不展开讨论了。很多语言已经已经对 WebSocket 做了封装，提供了很好的 library，可以直接拿来用。</p>
 <h2 id="详谈Socket"><a href="#详谈Socket" class="headerlink" title="详谈Socket"></a>详谈Socket</h2><h3 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h3><p>因为是 Socket 是对 TCP 和 UDP 的封装，所以看一下 TCP 和 UDP 的报文格式。</p>
-<p><img src="https://ws1.sinaimg.cn/large/8a79c363gy1g1oop98hctj20e30a53yt.jpg" alt="tcpandudp"></p>
+<p><img src="/image/tcpandudp.png" alt="tcpandudp.png"></p>
 <p>通讯过程:</p>
-<p><img src="https://ws1.sinaimg.cn/large/8a79c363gy1g1oopkd9x4j20n60owtbx.jpg" alt="tcpProcess"></p>
+<p><img src="/image/tcpProcess.png" alt="tcpProcess.png"></p>
 <h3 id="Socket-的通讯过程"><a href="#Socket-的通讯过程" class="headerlink" title="Socket 的通讯过程"></a>Socket 的通讯过程</h3><p>服务器端:</p>
 <ol>
 <li>申请一个socket</li>

@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="ES简介elasticsearch 是基于 lucene /luːsɪŋ/ 的搜索库，分布式的文档存储，搜索，分析，支持 PB 级数据。 下面是 ES 里的一些概念  Near Real Time，近实时 写入数据到数据可以被搜索有一个小延迟（大概是 1s） 基于 es 执行搜索和分析可以达到秒级   Cluster 集群 Node 节点 Document &amp;amp; field document">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363ly1g3jslsbymwj20ol0gddgb.jpg">
-<meta property="og:updated_time" content="2019-06-17T04:50:53.470Z">
+<meta property="og:image" content="https://blog.pwxcoo.com/image/es-write-detail.png">
+<meta property="og:updated_time" content="2020-06-25T09:51:09.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Advanced Java】搜索引擎">
 <meta name="twitter:description" content="ES简介elasticsearch 是基于 lucene /luːsɪŋ/ 的搜索库，分布式的文档存储，搜索，分析，支持 PB 级数据。 下面是 ES 里的一些概念  Near Real Time，近实时 写入数据到数据可以被搜索有一个小延迟（大概是 1s） 基于 es 执行搜索和分析可以达到秒级   Cluster 集群 Node 节点 Document &amp;amp; field document">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/8a79c363ly1g3jslsbymwj20ol0gddgb.jpg">
+<meta name="twitter:image" content="https://blog.pwxcoo.com/image/es-write-detail.png">
     
     
         
@@ -107,7 +107,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES简介"><span class="toc-number">1.</span> <span class="toc-text">ES简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-如何实现分布式"><span class="toc-number">2.</span> <span class="toc-text">ES 如何实现分布式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-工作原理"><span class="toc-number">3.</span> <span class="toc-text">ES 工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写数据"><span class="toc-number">3.1.</span> <span class="toc-text">写数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读数据"><span class="toc-number">3.2.</span> <span class="toc-text">读数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es搜索"><span class="toc-number">3.3.</span> <span class="toc-text">es搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es写数据底层原理"><span class="toc-number">3.4.</span> <span class="toc-text">es写数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es删除-更新数据底层原理"><span class="toc-number">3.5.</span> <span class="toc-text">es删除/更新数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES-优化"><span class="toc-number">3.6.</span> <span class="toc-text">ES 优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES简介"><span class="toc-number">1.</span> <span class="toc-text">ES简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-如何实现分布式"><span class="toc-number">2.</span> <span class="toc-text">ES 如何实现分布式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-工作原理"><span class="toc-number">3.</span> <span class="toc-text">ES 工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写数据"><span class="toc-number">3.1.</span> <span class="toc-text">写数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读数据"><span class="toc-number">3.2.</span> <span class="toc-text">读数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es搜索"><span class="toc-number">3.3.</span> <span class="toc-text">es搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es写数据底层原理"><span class="toc-number">3.4.</span> <span class="toc-text">es写数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es删除-更新数据底层原理"><span class="toc-number">3.5.</span> <span class="toc-text">es删除/更新数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES-优化"><span class="toc-number">3.6.</span> <span class="toc-text">ES 优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -194,7 +194,7 @@
 <li>query phase：shard 返回 doc id 给 coordinating node，coordinating node 对结果合并，排序，分页等操作，产出最终结果</li>
 <li>fetch phase：由 coordinating node 根据 doc id 来拉取实际的 document 数据</li>
 </ul>
-<h3 id="es写数据底层原理"><a href="#es写数据底层原理" class="headerlink" title="es写数据底层原理"></a>es写数据底层原理</h3><p><img src="https://ws1.sinaimg.cn/large/8a79c363ly1g3jslsbymwj20ol0gddgb.jpg" alt="es-write-detail"></p>
+<h3 id="es写数据底层原理"><a href="#es写数据底层原理" class="headerlink" title="es写数据底层原理"></a>es写数据底层原理</h3><p><img src="/image/es-write-detail.png" alt="es-write-detail.png"></p>
 <p>因此是 1s 的准实时，5s 的数据丢失。</p>
 <h3 id="es删除-更新数据底层原理"><a href="#es删除-更新数据底层原理" class="headerlink" title="es删除/更新数据底层原理"></a>es删除/更新数据底层原理</h3><p>如果是删除操作，commit 的时候会生成一个 .del 文件，里面将某个 doc 标识为 deleted 状态，那么搜索的时候根据 .del 文件就知道这个 doc 是否被删除了。</p>
 <p>如果是更新操作，就是将原来的 doc 标识为 deleted 状态，然后新写入一条数据。</p>
@@ -209,9 +209,6 @@
 <li>冷热分离，不要让冷数据冲刷掉热数据</li>
 <li>不用分页，向微博一样用 scroll</li>
 </ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://doocs.github.io/advanced-java/#/" target="_blank" rel="noopener">Java 进阶扫盲</a></li>
-</ul>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a href="https://doocs.github.io/advanced-java/#/" target="_blank" rel="noopener">Java 进阶扫盲</a></li>
 </ul>
@@ -246,7 +243,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES简介"><span class="toc-number">1.</span> <span class="toc-text">ES简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-如何实现分布式"><span class="toc-number">2.</span> <span class="toc-text">ES 如何实现分布式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-工作原理"><span class="toc-number">3.</span> <span class="toc-text">ES 工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写数据"><span class="toc-number">3.1.</span> <span class="toc-text">写数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读数据"><span class="toc-number">3.2.</span> <span class="toc-text">读数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es搜索"><span class="toc-number">3.3.</span> <span class="toc-text">es搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es写数据底层原理"><span class="toc-number">3.4.</span> <span class="toc-text">es写数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es删除-更新数据底层原理"><span class="toc-number">3.5.</span> <span class="toc-text">es删除/更新数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES-优化"><span class="toc-number">3.6.</span> <span class="toc-text">ES 优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES简介"><span class="toc-number">1.</span> <span class="toc-text">ES简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-如何实现分布式"><span class="toc-number">2.</span> <span class="toc-text">ES 如何实现分布式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES-工作原理"><span class="toc-number">3.</span> <span class="toc-text">ES 工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写数据"><span class="toc-number">3.1.</span> <span class="toc-text">写数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读数据"><span class="toc-number">3.2.</span> <span class="toc-text">读数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es搜索"><span class="toc-number">3.3.</span> <span class="toc-text">es搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es写数据底层原理"><span class="toc-number">3.4.</span> <span class="toc-text">es写数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es删除-更新数据底层原理"><span class="toc-number">3.5.</span> <span class="toc-text">es删除/更新数据底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES-优化"><span class="toc-number">3.6.</span> <span class="toc-text">ES 优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

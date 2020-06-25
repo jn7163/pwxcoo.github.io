@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="PWXCOO">
 <meta property="og:description" content="起因之前 pwxcoo.com 这个玩具网站一直是 HTTP 的，虽然说全世界都在提倡 HTTPS，但是感觉这个玩具网站没有一定要 HTTPS 的理由。。索性也没理了。 因为突然遇到一个鸡掰的问题，就是有些东西移动端无法处理，我需要在服务器这边处理一些数据，然后再传给移动端。 然后这个移动端是微信。。然后呢，微信这边处理的时序图是这样的，微信的给开发者一个接口，然后微信把数据给开发者服务器，开发者">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1ooo7q6r9j20hl03tjrt.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1oooitfbaj20e70cp3zj.jpg">
-<meta property="og:updated_time" content="2019-06-10T03:09:12.062Z">
+<meta property="og:image" content="https://blog.pwxcoo.com/image/https.png">
+<meta property="og:image" content="https://blog.pwxcoo.com/image/migrate.png">
+<meta property="og:updated_time" content="2020-06-25T09:52:58.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把网站升级到HTTPS">
 <meta name="twitter:description" content="起因之前 pwxcoo.com 这个玩具网站一直是 HTTP 的，虽然说全世界都在提倡 HTTPS，但是感觉这个玩具网站没有一定要 HTTPS 的理由。。索性也没理了。 因为突然遇到一个鸡掰的问题，就是有些东西移动端无法处理，我需要在服务器这边处理一些数据，然后再传给移动端。 然后这个移动端是微信。。然后呢，微信这边处理的时序图是这样的，微信的给开发者一个接口，然后微信把数据给开发者服务器，开发者">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/8a79c363gy1g1ooo7q6r9j20hl03tjrt.jpg">
+<meta name="twitter:image" content="https://blog.pwxcoo.com/image/https.png">
     
     
         
@@ -105,7 +105,7 @@
 <p>然后就好了，证书和私钥位置在</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/letsencrypt/live/www.example.com/privkey.pem</span><br></pre></td></tr></table></figure>
 <p>升级完成~</p>
-<p><img src="https://ws1.sinaimg.cn/large/8a79c363gy1g1ooo7q6r9j20hl03tjrt.jpg" alt="https"></p>
+<p><img src="/image/https.png" alt="https.png"></p>
 <p>要注意看接下来他问你的几个问题，比如说要不要把原来的 HTTP 重定向到 HTTPS 阿什么的，不看也没关系，到时候重新改一下 nginx 的配置文件就好了。证书是 90 天的，运行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo certbot renew --dry-run</span><br></pre></td></tr></table></figure>
 <p>Certbot 会帮你启动一个定时任务，在证书过期时自动更新。</p>
@@ -113,7 +113,7 @@
 <h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><p>因为网站之前用了七牛云的图床，然后因为七牛云免费图床是 HTTP 的，所以在 Chrome 里虽然是 HTTPS，但是没有那个绿色的小锁。</p>
 <p>我搞了半天，他的 HTTPS 外链的图床是要收费的(?)，而且我也没找到升级 HTTPS 图床的入口(?)。。</p>
 <p>于是换了一个图床 <a href="https://sm.ms/" target="_blank" rel="noopener">SM.MS</a>。因为网站不大，几张图片，人肉迁徙过去了，然后开了日志文件用来记录迁徙记录，要是以后这个图床倒闭，到时候有这个日志文件起码不会太混乱。。</p>
-<p><img src="https://ws1.sinaimg.cn/large/8a79c363gy1g1oooitfbaj20e70cp3zj.jpg" alt="migrate"></p>
+<p><img src="/image/migrate.png" alt="migrate.png"></p>
 <h2 id="通配符匹配域名"><a href="#通配符匹配域名" class="headerlink" title="通配符匹配域名"></a>通配符匹配域名</h2><p>上面这样是匹配单独域名，如果想要 <code>*.pwxcoo.com</code> 这样通配符匹配域名的话，需要另外一种设置。</p>
 <p>好像也是 lets encrypt 去年刚出的功能。配置流程稍微复杂一点。</p>
 <p>具体操作如下可以看这篇博文。<a href="https://www.cnblogs.com/stulzq/p/8628163.html" target="_blank" rel="noopener">获取 Let’s Encrypt 免费通配符证书实现Https</a>。</p>
